@@ -13,7 +13,7 @@
         "buildCommand": "npm ci"
       },
     "deploy": {
-        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn portfolio.wsgi",
+        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn portfolio.wsgi:application --bind 0.0.0.0:$PORT && DJANGO_SUPERUSER_PASSWORD=$SUPER_USER_PASSWORD python manage.py createsuperuser --username $SUPER_USER_NAME --email $SUPER_USER_EMAIL --noinput",
         "restartPolicyType": "ON_FAILURE",
         "restartPolicyMaxRetries": 10
     }
