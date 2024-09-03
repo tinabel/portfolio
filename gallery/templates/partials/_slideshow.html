@@ -1,0 +1,83 @@
+{% load static %} {% load partials %}
+
+<div data-slideshow class="slideshow">
+  <ul data-slides class="featured-images">
+    {% for image in featured_images %}
+    <li data-slide="" class="featured-image">
+      <image src="/media{{ image.image_file }}" alt="{{ image.alt }}" />
+    </li>
+    {% endfor %}
+  </ul>
+  <div data-play-overlay class="slideshow-play-overlay">
+    <button data-play class="play">
+      <span class="sr-only">Play</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="mdi-play-circle"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+        />
+      </svg>
+    </button>
+    <button data-pause class="pause">
+      <span class="sr-only">Pause</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="mdi-pause-circle"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M15,16H13V8H15M11,16H9V8H11M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+        />
+      </svg>
+    </button>
+  </div>
+  <div data-prev-overlay class="slideshow-nav prev">
+    <button data-prev class="prev">
+      <span class="sr-only">Previous</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="mdi-chevron-left"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+        />
+      </svg>
+    </button>
+  </div>
+  <div data-next-overlay class="slideshow-nav next">
+    <button data-next class="next">
+      <span class="sr-only">Next</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="mdi-chevron-right"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+      </svg>
+    </button>
+  </div>
+</div>
