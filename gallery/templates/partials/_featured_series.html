@@ -1,0 +1,17 @@
+<div class="featured-series">
+  <h2>Featured Series</h2>
+  <ul class="featured-series--list">
+    {% for series in featured_series %}
+    <li class="featured-series--list-item">
+      <a href="series/{{ series.slug }}" class="featured-series--series-link">
+        <img
+          src="/media{{ series.cover_image.image_file }}"
+          alt="{{ series.title }}"
+          class="featured-series--series-image"
+        />
+        <span class="featured-series--series-title">{{ series.title }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
