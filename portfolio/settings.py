@@ -61,6 +61,15 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://django-server-production-636a.up.railway.app',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://django-server-production-636a.up.railway.app'
+]
+
+
 ROOT_URLCONF = 'portfolio.urls'
 
 default_loaders = [
