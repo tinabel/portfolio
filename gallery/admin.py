@@ -25,7 +25,7 @@ class MediumAdmin(admin.ModelAdmin):
 class MediumResource(resources.ModelResource):
   class Meta:
     model = Medium
-    import_id_fields = ["name", "cover_image", "description", "is_featured"]
+    import_id_fields = ["name", "cover_image", "slug"]
     skip_unchanged = True
     use_bulk = True
 
