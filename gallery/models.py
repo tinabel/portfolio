@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-from .image_utility import Thumbnailer
+from .image_utility import ImageUtility
 
 class Medium(models.Model):
   name = models.CharField(max_length=255)
@@ -73,15 +73,15 @@ class Image(models.Model):
   #     return None
   #   else:
   #     data_img = BytesIO()
-  #   Thumbnailer.scale_image(self.image_file.path)
+  #   ImageUtility.scale_image(self.image_file.path)
   #   return self.image_file.url
 
   def save(self, *args, **kwargs):
     if not self.image_file:
       return None
     else:
-      Thumbnailer.scale_image(self.image_file.name)
-      self.thumbnail_image = Thumbnailer.thumbnail_path(self.image_file.name)
+      ImageUtility.scale_image(self.image_file.name)
+      self.thumbnail_image = ImageUtility.thumbnail_path(self.image_file.name)
 
     if not self.slug:
       self.slug = slugify(self.title)

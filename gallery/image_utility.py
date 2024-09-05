@@ -4,7 +4,7 @@ import os
 
 class ImageUtility:
   def thumbnail_path(image_path):
-    return settings.MEDIA_ROOT + "/thumbnails/" + os.path.basename(image_path)
+    return os.path.join("/thumbnails", os.path.basename(image_path))
 
 
   def scale_image(image_path):
@@ -23,5 +23,5 @@ class ImageUtility:
             new_width = int((new_height / height) * width)
 
         img = img.resize((new_width, new_height))
-        img.save(Thumbnailer.thumbnail_path(image_path), 'JPEG', quality=100)
+        img.save(ImageUtility.thumbnail_path(image_path), 'JPEG', quality=100)
 
