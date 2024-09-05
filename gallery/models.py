@@ -58,6 +58,22 @@ class Image(models.Model):
   tags = models.CharField(max_length=255, blank=True)
   is_featured = models.BooleanField(default=False)
   slug = models.SlugField(blank=True)
+  focal_point=models.Field(
+    "Focal Point",
+    choices=[
+      ('top_left', 'Top Left'),
+      ('top', 'Top'),
+      ('top_right', 'Top Right'),
+      ('center_left', 'Center Left'),
+      ('center', 'Center'),
+      ('center_right', 'Center Right'),
+      ('bottom_left', 'Bottom Left'),
+      ('bottom', 'Bottom'),
+      ('bottom_right', 'Bottom Right'),
+    ],
+    null=True,
+    blank=True
+  )
 
   def get_filename(self):
     return os.path.basename(self.image_file.name) if self.image_file else None

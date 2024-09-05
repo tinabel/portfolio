@@ -42,7 +42,7 @@ admin.site.register(Medium, MediumAdmin)
 class ImageResource(resources.ModelResource):
     class Meta:
         model = Image
-        import_id_fields = ["image_file", "title", "alt", "description", "medium", "series", "tags", "is_featured"]
+        import_id_fields = ["image_file", "title", "alt", "description", "medium", "series", "tags", "is_featured", "focal_point"]
         skip_unchanged = True
         use_bulk = True
 
