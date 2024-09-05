@@ -3,13 +3,13 @@
   <ul class="featured-series--list">
     {% for series in featured_series %}
     <li class="featured-series--list-item">
-      <a href="series/{{ series.slug }}" class="featured-series--series-link">
+      <a href="series/{{ series.slug }}" class="featured-series--link">
         <img
-          src="/media{{ series.cover_image.image_file }}"
+          src="/media{{ series.cover_image.thumbnail_image }}"
           alt="{{ series.title }}"
-          class="featured-series--series-image"
+          class="featured-series--image"
         />
-        <span class="featured-series--series-title">{{ series.title }}</span>
+        <span class="featured-series--title">{{ series.title }}</span>
       </a>
     </li>
     {% endfor %}

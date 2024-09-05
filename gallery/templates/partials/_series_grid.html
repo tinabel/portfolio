@@ -5,14 +5,14 @@
     <li class="series-grid--list-item">
       <a
         href="{{ series.slug }}/{{ image.slug }}"
-        class="series-grid--series-link"
+        class="series-grid--link"
       >
         <img
-          src="/media{{ image.image_file }}"
+          src="/media{{ image.thumbnail_image }}"
           alt="{{ image.title }}"
-          class="series-grid--series-image"
+          class="series-grid--image"
         />
-        <span class="series-grid--series-title">{{ image.title }}</span>
+        <span class="series-grid--title">{{ image.title }}</span>
       </a>
     </li>
     {% endfor %}

@@ -52,7 +52,7 @@ class Image(models.Model):
   thumbnail_image = models.ImageField(upload_to='thumbnails', blank=True)
   title = models.CharField(max_length=255)
   description = models.TextField(blank=True)
-  alt = models.CharField(max_length=255, blank=True)
+  alt = models.TextField(blank=True)
   medium = models.ForeignKey(Medium, on_delete=models.SET_NULL, null=True, blank=True)
   series = models.ForeignKey(Series, on_delete=models.SET_NULL, null=True, blank=True)
   tags = models.CharField(max_length=255, blank=True)
