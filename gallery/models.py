@@ -58,20 +58,21 @@ class Image(models.Model):
   tags = models.CharField(max_length=255, blank=True)
   is_featured = models.BooleanField(default=False)
   slug = models.SlugField(blank=True)
-  focal_point=models.Field(
-    "Focal Point",
+  focal_point = models.CharField(
+    max_length=255,
     choices=[
-      ('top_left', 'Top Left'),
-      ('top', 'Top'),
-      ('top_right', 'Top Right'),
-      ('center_left', 'Center Left'),
-      ('center', 'Center'),
-      ('center_right', 'Center Right'),
+      ('', 'Focal Point'),
+      ('bottom', 'Bottom Center'),
       ('bottom_left', 'Bottom Left'),
-      ('bottom', 'Bottom'),
       ('bottom_right', 'Bottom Right'),
+      ('center', 'Center'),
+      ('left', 'Center Left'),
+      ('right', 'Center Right'),
+      ('top', 'Top Center'),
+      ('top_left', 'Top Left'),
+      ('top_right', 'Top Right'),
     ],
-    null=True,
+    default="center",
     blank=True
   )
 
