@@ -2,7 +2,7 @@ from import_export.admin import ImportExportModelAdmin, ImportExportActionModelA
 from django.contrib import admin
 from .models import Image, Series, Medium
 from import_export import resources
-
+from django import forms
 
 class SeriesResource(resources.ModelResource):
   class Meta:
@@ -14,7 +14,7 @@ class SeriesResource(resources.ModelResource):
 class SeriesAdmin(ImportExportActionModelAdmin):
   resource_class = SeriesResource
   list_display = ('title', 'slug', 'cover_image')
-  prepopulated_fields = {"slug": ("title",)}
+  prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Series, SeriesAdmin)
 
@@ -25,7 +25,7 @@ class MediumAdmin(admin.ModelAdmin):
 class MediumResource(resources.ModelResource):
   class Meta:
     model = Medium
-    import_id_fields = ["name", "cover_image", "slug"]
+    import_id_fields = ['name', 'cover_image', 'slug']
     skip_unchanged = True
     use_bulk = True
 
@@ -35,22 +35,24 @@ class MediumResource(resources.ModelResource):
 class MediumAdmin(ImportExportActionModelAdmin):
   resource_class = MediumResource
   list_display = ('name', 'slug', 'cover_image')
-  prepopulated_fields = {"slug": ("name",)}
+  prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Medium, MediumAdmin)
 
 class ImageResource(resources.ModelResource):
     class Meta:
         model = Image
-        import_id_fields = ["image_file", "title", "alt", "description", "medium", "series", "tags", "is_featured", "focal_point"]
+        import_id_fields = ['image_file', 'title', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured']
         skip_unchanged = True
         use_bulk = True
 
 class ImageAdmin(ImportExportActionModelAdmin):
   resource_class = ImageResource
+  fields = ('title', 'image_tag', 'image_file', 'thumbnail_image', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured', 'image_focal_point')
   list_display = ('title', 'image_file', 'thumbnail_image', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured')
   list_filter = ('medium', 'series')
-  prepopulated_fields = {"slug": ("title",)}
+  prepopulated_fields = {'slug': ('title',)}
+  readonly_fields = ('image_tag',)
 
   def get_description(self):
     return self.description

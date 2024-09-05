@@ -328,8 +328,16 @@ main {
 .featured-series .series-grid--image,
 .series-grid .featured-series--image,
 .series-grid .series-grid--image {
-  width: 100%;
-  max-width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  height: auto;
+  width: auto;
 }
 
 @media screen and (max-width: 650px) {

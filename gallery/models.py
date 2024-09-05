@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-from .image_utility import ImageUtility
+from django.utils.html import mark_safe
 
 class Medium(models.Model):
   name = models.CharField(max_length=255)
@@ -40,7 +40,7 @@ class Series(models.Model):
     return self.title
 
   def get_absolute_url(self):
-    return reverse("series", kwargs={"slug": self.slug})
+    return reverse('series', kwargs={'slug': self.slug})
 
   def save(self, *args, **kwargs):
     if not self.slug:
@@ -48,19 +48,7 @@ class Series(models.Model):
     return super().save(*args, **kwargs)
 
 class Image(models.Model):
-  image_file = models.ImageField(upload_to='artwork', blank=True)
-  thumbnail_image = models.ImageField(upload_to='thumbnails', blank=True)
-  title = models.CharField(max_length=255)
-  description = models.TextField(blank=True)
-  alt = models.TextField(blank=True)
-  medium = models.ForeignKey(Medium, on_delete=models.SET_NULL, null=True, blank=True)
-  series = models.ForeignKey(Series, on_delete=models.SET_NULL, null=True, blank=True)
-  tags = models.CharField(max_length=255, blank=True)
-  is_featured = models.BooleanField(default=False)
-  slug = models.SlugField(blank=True)
-  focal_point = models.CharField(
-    max_length=255,
-    choices=[
+  image_focal_points=(
       ('', 'Focal Point'),
       ('bottom', 'Bottom Center'),
       ('bottom_left', 'Bottom Left'),
@@ -71,10 +59,25 @@ class Image(models.Model):
       ('top', 'Top Center'),
       ('top_left', 'Top Left'),
       ('top_right', 'Top Right'),
-    ],
-    default="center",
-    blank=True
   )
+
+  image_file = models.ImageField(upload_to='artwork', blank=True)
+  thumbnail_image = models.ImageField(upload_to='thumbnails', blank=True)
+  title = models.CharField(max_length=255)
+  description = models.TextField(blank=True)
+  alt = models.TextField(blank=True)
+  medium = models.ForeignKey(Medium, on_delete=models.SET_NULL, null=True, blank=True)
+  series = models.ForeignKey(Series, on_delete=models.SET_NULL, null=True, blank=True)
+  tags = models.CharField(max_length=255, blank=True)
+  is_featured = models.BooleanField(default=False)
+  slug = models.SlugField(blank=True)
+  image_focal_point = models.CharField(max_length=255, choices=image_focal_points, null=True, blank=True)
+
+  def image_tag(self):
+    url = settings.MEDIA_URL + self.thumbnail_image.name
+    return mark_safe('<img src="%s" alt="" style="max-width: 300px; max-height: 300px;" />' % url)
+
+  image_tag.short_description = 'Image'
 
   def get_filename(self):
     return os.path.basename(self.image_file.name) if self.image_file else None
@@ -91,4 +94,4 @@ class Image(models.Model):
     return super(Image, self).save(*args, **kwargs)
 
   def get_absolute_url(self):
-    return reverse("image_view", kwargs={"slug": self.slug})
+    return reverse("image_view", kwargs={'slug': self.slug})
