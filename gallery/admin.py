@@ -7,7 +7,7 @@ from import_export import resources
 class SeriesResource(resources.ModelResource):
   class Meta:
     model = Series
-    import_id_fields = ["title", "cover_image", "description", "medium", "is_featured"]
+    import_id_fields = ['title', 'slug', 'cover_image']
     skip_unchanged = True
     use_bulk = True
 
@@ -48,7 +48,7 @@ class ImageResource(resources.ModelResource):
 
 class ImageAdmin(ImportExportActionModelAdmin):
   resource_class = ImageResource
-  list_display = ('title', 'image_file', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured')
+  list_display = ('title', 'image_file', 'thumbnail_image', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured')
   list_filter = ('medium', 'series')
   prepopulated_fields = {"slug": ("title",)}
 

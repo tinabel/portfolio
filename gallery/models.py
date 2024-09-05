@@ -68,21 +68,7 @@ class Image(models.Model):
   def __str__(self):
     return self.title
 
-  # def get_thumbnail(self):
-  #   if not self.image_file:
-  #     return None
-  #   else:
-  #     data_img = BytesIO()
-  #   ImageUtility.scale_image(self.image_file.path)
-  #   return self.image_file.url
-
   def save(self, *args, **kwargs):
-    if not self.image_file:
-      return None
-    else:
-      ImageUtility.scale_image(self.image_file.name)
-      self.thumbnail_image = ImageUtility.thumbnail_path(self.image_file.name)
-
     if not self.slug:
       self.slug = slugify(self.title)
     return super(Image, self).save(*args, **kwargs)
