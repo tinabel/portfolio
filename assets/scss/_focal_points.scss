@@ -5,14 +5,6 @@
   left: 0;
   right: 0;
 
-  &-center {
-    top: 0;
-    bottom: auto;
-    margin: 0 auto auto;
-    left: 0;
-    right: 0;
-  }
-
   &-left {
     top: 0;
     bottom: auto;
@@ -36,21 +28,20 @@
   margin: auto;
   left: 0;
   right: 0;
-
-  &-left {
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 0;
-    right: auto;
-  }
-  &-right {
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: auto;
-    right: 0;
-  }
+}
+.left {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: auto;
+}
+.right {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: auto;
+  right: 0;
 }
 
 .bottom {
@@ -59,14 +50,6 @@
   margin: auto auto 0 auto;
   left: 0;
   right: 0;
-
-  &-center {
-    bottom: 0;
-    top: auto;
-    margin: auto auto 0 auto;
-    left: 0;
-    right: 0;
-  }
 
   &-left {
     bottom: 0;

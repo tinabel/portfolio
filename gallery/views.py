@@ -5,16 +5,16 @@ from .serializers import ImageSerializer
 
 def index(request):
   images = Image.objects.filter(is_featured=True)
-  series = Series.objects.filter(is_featured=True)
+  series = Series.objects.filter(is_featured=True).order_by('position')
   featured_series_image_ids = series.all().values_list('cover_image', flat = True)
-  series_images = Image.objects.filter(id__in=featured_series_image_ids)
+  series_images = Image.objects.filter(id__in=featured_series_image_ids).order_by('series__position')
 
   return render(request, 'index.html', {'featured_images': images, 'featured_series': series, 'featured_series_images': series_images})
 
 def artwork_view(request):
-  all_series = Series.objects.all()
-  series_image_ids = all_series.all().values_list('cover_image', flat = True)
-  series_images = Image.objects.filter(id__in=series_image_ids)
+  all_series = Series.objects.all().order_by('position')
+  series_image_ids = all_series.values_list('cover_image', flat = True)
+  series_images = Image.objects.filter(id__in=series_image_ids).order_by('series__position')
   return render(request, 'artwork.html', {'series': all_series, 'series_images': series_images})
 
 def series_view(request, series_slug):

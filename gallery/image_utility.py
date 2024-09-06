@@ -4,13 +4,13 @@ import os
 
 class ImageUtility:
   def thumbnail_path(image_path):
-    return os.path.join("/thumbnails", os.path.basename(image_path))
+    return os.path.join(settings.MEDIA_ROOT,"thumbnails", os.path.basename(image_path))
 
 
   def scale_image(image_path):
     """Resize an image to have a maximum size of 480px while preserving aspect ratio."""
 
-    image_path = settings.MEDIA_ROOT + image_path
+    image_path = settings.MEDIA_ROOT + '/' + image_path
 
     with Image.open(image_path) as img:
         width, height = img.size

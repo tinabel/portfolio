@@ -3,7 +3,7 @@
     {% for image in images %}
     <li class="image-grid--list-item">
       {% if series %}
-        <a href="series/{{ image.series.slug }}" class="image-grid--link">
+        <a href="/series/{{ image.series.slug }}" class="image-grid--link">
       {% else %}
           <a href="/series/{{ image.series.slug }}/image/{{ image.slug }}" class="image-grid--link">
       {% endif %}
