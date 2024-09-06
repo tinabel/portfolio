@@ -32,7 +32,7 @@ class Series(models.Model):
   medium = models.ForeignKey(Medium, on_delete=models.SET_NULL, null=True, blank=True)
   is_featured = models.BooleanField(default=False)
   slug = models.SlugField(blank=True)
-  position=models.IntegerField(blank=True, null=True)
+  position = models.IntegerField(blank=True, null=True)
 
   class Meta:
       verbose_name_plural = "series"
