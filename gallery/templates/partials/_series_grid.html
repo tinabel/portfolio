@@ -3,14 +3,11 @@
   <ul class="series-grid--list">
     {% for image in series_images %}
     <li class="series-grid--list-item">
-      <a
-        href="{{ series.slug }}/{{ image.slug }}"
-        class="series-grid--link"
-      >
+      <a href="{{ series.slug }}/{{ image.slug }}" class="series-grid--link">
         <img
           src="/media{{ image.thumbnail_image }}"
           alt="{{ image.title }}"
-          class="series-grid--image"
+          class="series-grid--image {{ image.get_focal_point_class }}"
         />
         <span class="series-grid--title">{{ image.title }}</span>
       </a>
