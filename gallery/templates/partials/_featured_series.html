@@ -7,7 +7,7 @@
         <img
           src="/media{{ series.cover_image.thumbnail_image }}"
           alt="{{ series.title }}"
-          class="featured-series--image"
+          class="featured-series--image {{ series.cover_image.get_focal_point_class }}"
         />
         <span class="featured-series--title">{{ series.title }}</span>
       </a>

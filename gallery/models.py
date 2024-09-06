@@ -85,6 +85,12 @@ class Image(models.Model):
   def get_description(self):
     return self.description
 
+  def get_focal_point_class(self):
+    if not self.image_focal_point:
+      focal_point_classname = "center"
+    focal_point_classname = self.image_focal_point.replace('_','-')
+    return focal_point_classname
+
   def __str__(self):
     return self.title
 
