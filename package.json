@@ -29,8 +29,5 @@
   "dependencies": {
     "npm-watch": "^0.13.0",
     "sass": "^1.77.8"
-  },
-  "devDependencies": {
-    "prettier-plugin-django": "^0.5.18"
   }
 }
