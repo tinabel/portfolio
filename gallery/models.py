@@ -88,7 +88,8 @@ class Image(models.Model):
   def get_focal_point_class(self):
     if not self.image_focal_point:
       focal_point_classname = "center"
-    focal_point_classname = self.image_focal_point.replace('_','-')
+    else:
+      focal_point_classname = self.image_focal_point.replace('_','-')
     return focal_point_classname
 
   def __str__(self):
