@@ -1,9 +1,12 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %}
+{% load static %}
 {% block main_content %}
   {% include "partials/_slideshow.html" %}
-  {% include "partials/_featured_series.html" %}
+  <div class="featured-series">
+    <h2>Featured Series</h2>
+    {% include "partials/_image_grid.html" with images=featured_series_images series=featured_series featured=True %}
+  </div>
 {% endblock %}
-
 {% block scripts%}
   <script src="{% static 'js/index.js' %}" type="module"></script>
 {% endblock %}

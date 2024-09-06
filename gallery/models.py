@@ -32,9 +32,17 @@ class Series(models.Model):
   medium = models.ForeignKey(Medium, on_delete=models.SET_NULL, null=True, blank=True)
   is_featured = models.BooleanField(default=False)
   slug = models.SlugField(blank=True)
+  position=models.IntegerField(blank=True, null=True)
 
   class Meta:
       verbose_name_plural = "series"
+
+  def images(self):
+    Image.objects.filter(series_id=self.id)
+
+  def cover(self):
+    image = Image.objects.filter(series_id=self.cover_image).first()
+    return image
 
   def __str__(self):
     return self.title

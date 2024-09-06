@@ -12,5 +12,5 @@ urlpatterns = [
     path("", index, name="index"),
     path("artwork/", artwork_view, name="artwork"),
     path("series/<slug:series_slug>", series_view),  # new
-    path("series/<slug:series_slug>/<slug:image_slug>", image_view),  # new
+    path("series/<slug:series_slug>/image/<slug:image_slug>", image_view),  # new
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_content %}
+  {% include "partials/_image_grid.html" with series=series images=series_images series=True %}
+{% endblock %}

@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %}
+{% load static %}
 {% block main_content %}
-  {{ series_id }}
-  {% include "partials/_series_grid.html" %}
+  {% include "partials/_image_grid.html" with series=series images=series_images series=False %}
 {% endblock %}
