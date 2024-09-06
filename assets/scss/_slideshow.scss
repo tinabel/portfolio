@@ -4,7 +4,8 @@
   height: 75vh;
   justify-content: center;
   margin: 0 auto;
-  max-width: 75rem;
+  max-width: 90rem;
+  min-height: 40rem;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -12,16 +13,20 @@
   .featured-images {
     align-items: center;
     display: flex;
+    height: 100%;
     list-style: none;
     margin: 0 auto;
-    max-width: 75rem;
+    max-width: 90rem;
     padding: 0;
+    position: relative;
     width: 100%;
   }
 
   .featured-image {
+    height: 100%;
     list-style: none;
     margin: 0;
+    max-width: 100%;
     opacity: 0;
     padding: 0;
     position: absolute;
@@ -38,8 +43,8 @@
     }
 
     img {
-      height: 100%;
-      margin-top: -25%;
+      max-width: 100%;
+      position: absolute;
       width: 100%;
     }
   }
@@ -50,10 +55,10 @@
     display: flex;
     height: 100%;
     justify-content: center;
+    margin: 0 10rem;
     opacity: 0;
     position: absolute;
     transition: background 0.5s ease-in-out;
-    margin: 0 10rem;
     width: calc(100% - 20rem);
     z-index: 10;
 
@@ -66,51 +71,20 @@
       );
       opacity: 1;
       transition: background 0.5s ease-in-out;
-
-      button {
-        background: transparent;
-        border: 0;
-        cursor: pointer;
-
-        &.hidden {
-          display: none;
-        }
-
-        svg {
-          pointer-events: none;
-        }
-
-        path {
-          fill: #aaa;
-          stroke: #333;
-          stroke-width: 0.5px;
-          stroke-linejoin: round;
-          stroke-linejoin: miter;
-        }
-        &:hover {
-          path {
-            fill: #eee;
-            stroke: #111;
-          }
-          stroke {
-            stroke: #eee;
-          }
-        }
-      }
     }
   }
 
   .slideshow-nav {
-    position: absolute;
-    z-index: 200;
-    height: 100%;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 10rem;
     background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    height: 100%;
+    justify-content: center;
     opacity: 0;
+    position: absolute;
     transition: opacity 0.5s ease-in-out;
+    width: 8rem;
+    z-index: 200;
 
     &.prev {
       border-right: 1px solid rgba(0, 0, 0, 0.5);
@@ -129,12 +103,12 @@
     }
 
     button {
-      position: relative;
-      height: 100%;
-      width: 100%;
       background: transparent;
       border: 0;
       cursor: pointer;
+      height: 100%;
+      position: relative;
+      width: 100%;
     }
   }
 
@@ -143,8 +117,41 @@
     border: 0;
     cursor: pointer;
 
+    &.hidden {
+      display: none;
+    }
+
+    svg {
+      pointer-events: none;
+    }
+
     path {
-      fill: #aaa;
+      fill: rgb(170, 170, 170, 0.75);
+      stroke: rgb(51, 51, 51, 0.75);
+      stroke-width: 0.5px;
+      stroke-linejoin: round;
+      stroke-linejoin: miter;
+    }
+
+    &:hover {
+      path {
+        fill: rgb(238, 238, 238, 0.65);
+        stroke: rgb(17, 17, 17, 0.75);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .slideshow {
+    margin-bottom: 2rem;
+    min-height: auto;
+
+    .featured-image {
+      img {
+        height: 100%;
+        margin: -25% auto;
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Unicase|IM+Fell+Great+Primer+SC|Raleway:400,400i,500,500i,700,700i");
 html,
 body {
+  background: #000;
   margin: 0;
   padding: 0;
 }
@@ -10,10 +11,22 @@ html {
 }
 
 body {
-  background: #000;
   color: #eee;
   font-family: "Raleway", sans-serif;
   padding: 9rem 0 0 0;
+}
+
+header,
+main,
+footer {
+  opacity: 0;
+}
+
+.ready header,
+.ready main,
+.ready footer {
+  opacity: 1;
+  transition: opacity 1.5s ease;
 }
 
 h1,
@@ -352,13 +365,6 @@ main {
   left: 0;
   right: 0;
 }
-.top-center {
-  top: 0;
-  bottom: auto;
-  margin: 0 auto auto;
-  left: 0;
-  right: 0;
-}
 .top-left {
   top: 0;
   bottom: auto;
@@ -381,14 +387,16 @@ main {
   left: 0;
   right: 0;
 }
-.center-left {
+
+.left {
   top: 0;
   bottom: 0;
   margin: auto;
   left: 0;
   right: auto;
 }
-.center-right {
+
+.right {
   top: 0;
   bottom: 0;
   margin: auto;
@@ -397,13 +405,6 @@ main {
 }
 
 .bottom {
-  bottom: 0;
-  top: auto;
-  margin: auto auto 0 auto;
-  left: 0;
-  right: 0;
-}
-.bottom-center {
   bottom: 0;
   top: auto;
   margin: auto auto 0 auto;

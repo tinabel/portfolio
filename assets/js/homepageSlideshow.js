@@ -1,10 +1,14 @@
-const slideshow = () => {
+export const slideshow = () => {
   const slides = document.querySelectorAll("[data-slide]");
   const playButton = document.querySelector("[data-play]");
   const pauseButton = document.querySelector("[data-pause]");
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  slides[0].classList.add("active");
+  const hasSlides = slides.length > 0 && playButton && pauseButton;
+
+  if (hasSlides) {
+    slides[0].classList.add("active");
+  }
 
   let currentSlide = 0;
   let intervalId;
@@ -31,6 +35,10 @@ const slideshow = () => {
   };
 
   const startSlideshow = () => {
+    if (!hasSlides) {
+      return;
+    }
+
     intervalId = setInterval(nextSlide, 2500);
     playButton.classList.add("hidden");
     pauseButton.classList.remove("hidden");
@@ -43,27 +51,30 @@ const slideshow = () => {
   };
 
   // Add event listeners for forward, backward, and stop buttons
-  playButton.addEventListener("click", () => {
-    nextSlide();
-    startSlideshow();
-  });
-  pauseButton.addEventListener("click", stopSlideshow);
+ if (hasSlides) {
+   playButton.addEventListener("click", () => {
+     nextSlide();
+     startSlideshow();
+   });
+   pauseButton.addEventListener("click", stopSlideshow);
 
-  document.querySelector("[data-prev]").addEventListener("click", () => {
-    clearInterval(intervalId);
-    previousSlide();
-    startSlideshow();
-  });
-  document.querySelector("[data-next]").addEventListener("click", () => {
-    clearInterval(intervalId);
-    nextSlide();
-    startSlideshow();
-  });
+   document.querySelector("[data-prev]").addEventListener("click", () => {
+     clearInterval(intervalId);
+     previousSlide();
+     startSlideshow();
+   });
+   document.querySelector("[data-next]").addEventListener("click", () => {
+     clearInterval(intervalId);
+     nextSlide();
+     startSlideshow();
+   });
+
+   if (!prefersReducedMotion) {
+     startSlideshow();
+   }
+ }
 
 
-  if (!prefersReducedMotion) {
-    startSlideshow();
-  }
 };
 
 export default {slideshow};

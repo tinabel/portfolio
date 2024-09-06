@@ -43,6 +43,8 @@
     <main>{% block main_content %}{% endblock %}</main>
 
     <footer role="footer">&copy; Tina Bell Vance</footer>
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+      <script src="{% static 'js/default.js' %}" type="module"></script>
+    {% endblock %}
   </body>
 </html>

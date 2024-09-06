@@ -1,5 +1,6 @@
 html,
 body {
+  background: #000;
   margin: 0;
   padding: 0;
 }
@@ -9,10 +10,24 @@ html {
 }
 
 body {
-  background: #000;
   color: #eee;
   font-family: "Raleway", sans-serif;
   padding: 9rem 0 0 0;
+}
+
+header,
+main,
+footer {
+  opacity: 0;
+}
+
+.ready {
+  header,
+  main,
+  footer {
+    opacity: 1;
+    transition: opacity 1.5s ease;
+  }
 }
 
 h1,
