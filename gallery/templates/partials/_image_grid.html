@@ -8,7 +8,7 @@
           <a href="/series/{{ image.series.slug }}/image/{{ image.slug }}" class="image-grid--link">
       {% endif %}
         <img
-          src="/media{{ image.thumbnail_image }}"
+          src="/media/{{ image.thumbnail_image.name }}"
           alt="{{ image.title }}"
           class="image-grid--image {{ image.get_focal_point_class }}"
         />
