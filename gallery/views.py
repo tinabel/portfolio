@@ -23,8 +23,8 @@ def series_view(request, series_slug):
   return render(request, 'series.html', { 'series': series, 'series_images': images })
 
 def image_view(request, series_slug, image_slug):
-  image = Image.objects.filter(slug=image_slug)
-  return render(request, 'image.html', {'image': image})
+  image = Image.objects.get(slug=image_slug)
+  return render(request, 'image.html', {'image': image, 'image_slug': image_slug })
 
 class ImageViewSet(viewsets.ModelViewSet):
   queryset = Image.objects.all()

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_content %}
+<div class="full-image">
+  <div class="full-image--info">
+    <h1>{{ image.title }}</h1>
+    {% if image.description %}
+    <p>{{ image.description }}</p>
+    {% endif %}
+  </div>
+  <div class="full-image--image-container">
+    <img
+    src="/media/{{ image.image_file.name }}"
+    alt="{{ image.alt }}"
+    />
+  </div>
+</div>
+{% endblock %}

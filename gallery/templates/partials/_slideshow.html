@@ -4,7 +4,11 @@
   <ul data-slides class="featured-images">
     {% for image in featured_images %}
     <li data-slide="" class="featured-image">
-      <image src="/media{{ image.image_file }}" alt="{{ image.alt }}" class="{{ image.get_focal_point_class }}" />
+      <image
+        src="/media/{{ image.image_file }}"
+        alt="{{ image.alt }}"
+        class="{{ image.get_focal_point_class }}"
+      />
     </li>
     {% endfor %}
   </ul>
