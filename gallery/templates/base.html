@@ -11,40 +11,50 @@
       name="keywords"
       content="photography, Tina Bell Vance, digital art, digital collage, nature photography, portfolio, gallery, fine art"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
-    <title>Tina Bell Vance</title>
+    <title>
+      Tina Bell Vance | {% block page_name %}Digital Artist{% endblock %}
+    </title>
 
     <meta property="og:site_name" content="Tina Bell Vance" />
     <meta property="og:title" content="Artwork" />
     <meta property="og:description" content="The artwork of Tina Bell Vance" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bellvance.com/" />
+    <style>
+      header,
+      main,
+      footer {
+        opacity: 0;
+      }
+
+      .loaded header,
+      .loaded main,
+      .loaded footer {
+        opacity: 1;
+        transition: opacity 1s ease;
+      }
+    </style>
   </head>
-  <body class="">
+  <body class="{% block body_class %}{% endblock %}" bgcolor="#000000">
     <header role="header">
       <h1>Tina Bell Vance</h1>
-      <nav class="navigation">
-        <ul class="navigation--list">
-          <li class="navigation--list-item">
-            <a title="Home" href="/">Home</a>
-          </li>
-          <li class="navigation--list-item">
-            <a title="Artwork" href="/artwork">Artwork</a>
-          </li>
-          <li class="navigation--list-item">
-            <a title="About" href="/about">About</a>
-          </li>
-        </ul>
-      </nav>
+      {% include "partials/_navigation.html" %}
     </header>
 
     <main>{% block main_content %}{% endblock %}</main>
 
-    <footer role="footer">&copy; Tina Bell Vance</footer>
-    {% block scripts %}
-      <script src="{% static 'js/default.js' %}" type="module"></script>
+    <footer role="footer">
+      <p>&copy; <a href="mailto:contact@bellvance.com">Tina Bell Vance</a></p>
+    </footer>
+
+    {% block modals %} {% endblock %} {% block scripts %}
+    <script src="{% static 'js/default.js' %}" type="module"></script>
     {% endblock %}
   </body>
 </html>

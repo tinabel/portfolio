@@ -1,18 +1,18 @@
 <div class="image-grid">
-  <ul class="image-grid--list">
+  <ul class="image-grid__list">
     {% for image in images %}
-      <li class="image-grid--list-item">
+      <li class="image-grid__list-item">
         {% if series %}
-          <a href="/series/{{ image.series.slug }}" class="image-grid--link">
+          <a href="/series/{{ image.series.slug }}" class="image-grid__link">
         {% else %}
-            <a href="/series/{{ image.series.slug }}/image/{{ image.slug }}" class="image-grid--link">
+            <a href="/series/{{ image.series.slug }}/image/{{ image.slug }}" class="image-grid__link">
         {% endif %}
           <img
             src="/media/{{ image.thumbnail_image.name }}"
             alt="{{ image.title }}"
-            class="image-grid--image {{ image.get_focal_point_class }}"
+            class="image-grid__image {{ image.get_focal_point_class }}"
           />
-          <span class="image-grid--title">
+          <span class="image-grid__title">
             {% if series %}
               {{ image.series.title }}
             {% else %}

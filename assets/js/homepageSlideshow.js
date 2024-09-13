@@ -1,13 +1,13 @@
 export const slideshow = () => {
-  const slides = document.querySelectorAll("[data-slide]");
-  const playButton = document.querySelector("[data-play]");
-  const pauseButton = document.querySelector("[data-pause]");
+  const slides = document.querySelectorAll('[data-target="slide"]');
+  const playButton = document.querySelector('[data-target="play"]');
+  const pauseButton = document.querySelector('[data-target="pause"]');
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+  console.log(playButton);
   const hasSlides = slides.length > 0 && playButton && pauseButton;
 
   if (hasSlides) {
-    slides[0].classList.add("active");
+    slides[0].classList.add('active');
   }
 
   let currentSlide = 0;
@@ -16,9 +16,9 @@ export const slideshow = () => {
   const showSlide = (slideIndex) => {
     slides.forEach((slide, index) => {
       if (index === currentSlide) {
-        slide.classList.add("active");
+        slide.classList.add('active');
       } else {
-        slide.classList.remove("active");
+        slide.classList.remove('active');
       }
     });
     currentSlide = (slideIndex + slides.length) % slides.length;
@@ -39,42 +39,40 @@ export const slideshow = () => {
       return;
     }
 
-    intervalId = setInterval(nextSlide, 2500);
-    playButton.classList.add("hidden");
-    pauseButton.classList.remove("hidden");
+    intervalId = setInterval(nextSlide, 4500);
+    playButton.classList.add('hidden');
+    pauseButton.classList.remove('hidden');
   };
 
   const stopSlideshow = () => {
     clearInterval(intervalId);
-    playButton.classList.remove("hidden");
-    pauseButton.classList.add("hidden");
+    playButton.classList.remove('hidden');
+    pauseButton.classList.add('hidden');
   };
 
   // Add event listeners for forward, backward, and stop buttons
- if (hasSlides) {
-   playButton.addEventListener("click", () => {
-     nextSlide();
-     startSlideshow();
-   });
-   pauseButton.addEventListener("click", stopSlideshow);
+  if (hasSlides) {
+    playButton.addEventListener('click', () => {
+      nextSlide();
+      startSlideshow();
+    });
+    pauseButton.addEventListener('click', stopSlideshow);
 
-   document.querySelector("[data-prev]").addEventListener("click", () => {
-     clearInterval(intervalId);
-     previousSlide();
-     startSlideshow();
-   });
-   document.querySelector("[data-next]").addEventListener("click", () => {
-     clearInterval(intervalId);
-     nextSlide();
-     startSlideshow();
-   });
+    clearInterval(intervalId);
+    document.querySelector('[data-target="prev"]').addEventListener('click', () => {
+      previousSlide();
+      startSlideshow();
+    });
+    document.querySelector('[data-target="next"]').addEventListener('click', () => {
+      clearInterval(intervalId);
+      nextSlide();
+      startSlideshow();
+    });
 
-   if (!prefersReducedMotion) {
-     startSlideshow();
-   }
- }
-
-
+    if (!prefersReducedMotion) {
+      startSlideshow();
+    }
+  }
 };
 
 export default {slideshow};

@@ -1,7 +1,11 @@
-import {ready} from "./utils.js";
-import homepageSlideshow from "./homepageSlideshow.js";
+import {ready} from './utils.js';
+import homepageSlideshow from './slideshow.js';
+import {navigation} from './navigation.js';
+import {modalInit} from './modal.js';
 
 ready(() => {
-  document.body.classList.add('ready');
+  modalInit();
+  navigation();
+  document.body.classList.add('loaded');
   homepageSlideshow.slideshow();
 });

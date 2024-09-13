@@ -1,0 +1,42 @@
+$background: #000;
+$body-text: #eee;
+$link: #aaa;
+$link-hover: #eee;
+$link-active: #fff;
+$nav-border: #555;
+
+$fonts: (
+  "sans": (
+    "font-family": #{"Montserrat", sans-serif},
+    "regular": 400,
+    "medium": 500,
+    "semi-bold": 600,
+    "bold": 700,
+  ),
+  "serif": (
+    "font-family": #{"Cinzel", serif},
+    "regular": 400,
+    "medium": 500,
+    "semi-bold": 600,
+    "bold": 700,
+    "bold-heavy": 800,
+    "bold-extra-heavy": 900
+
+  ),
+  "heading": (
+    "font-family": #{"Cinzel",
+    Cambria,
+    Cochin,
+    Georgia,
+    Times,
+    "Times New Roman",
+    serif},
+    "normal": 400,
+    "bold": 700,
+  ),
+);
+
+$navLinkHoverLine: 0.0625rem;
+
+
+$transition: all ease-in-out 100ms;

@@ -2,17 +2,37 @@
 {% load static %}
 {% block main_content %}
 <div class="full-image">
-  <div class="full-image--info">
+  <a href="/series/{{ image.series.slug }}" class="full-image__back-link">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      id="mdi-chevron-left"
+      width="128"
+      height="128"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+    </svg>
+    Back to {{ image.series.title }}
+  </a>
+  <div class="full-image__info">
     <h1>{{ image.title }}</h1>
     {% if image.description %}
     <p>{{ image.description }}</p>
     {% endif %}
   </div>
-  <div class="full-image--image-container">
-    <img
-    src="/media/{{ image.image_file.name }}"
-    alt="{{ image.alt }}"
-    />
+  <div class="full-image__image-container">
+    <a
+      href="/media/{{ image.image_file.name }}"
+      target="_blank"
+      rel="noopener"
+      data-target="modal-trigger"
+    >
+      <img src="/media/{{ image.image_file.name }}" alt="{{ image.alt }}" />
+    </a>
   </div>
 </div>
+{% endblock %} {% block modals %} {% include "./partials/_image_modal.html" %}
 {% endblock %}

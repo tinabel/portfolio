@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Image, Series
 from .serializers import ImageSerializer
+from .forms import ContactForm
 
 def index(request):
   images = Image.objects.filter(is_featured=True)
@@ -25,6 +26,19 @@ def series_view(request, series_slug):
 def image_view(request, series_slug, image_slug):
   image = Image.objects.get(slug=image_slug)
   return render(request, 'image.html', {'image': image, 'image_slug': image_slug })
+
+def contact(request):
+  if request.method == 'POST':
+    form = ContactForm(request.POST)
+    if form.is_valid():
+      pass
+      return redirect('success')
+  else:
+    form = ContactForm()
+  return render(request, 'contact.html', {'form': form})
+
+def success(request):
+  return HttpResponse('Your message was successfully sent. Thank you!')
 
 class ImageViewSet(viewsets.ModelViewSet):
   queryset = Image.objects.all()

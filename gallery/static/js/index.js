@@ -1,5 +1,5 @@
-import {ready} from "./utils.js";
-import homepageSlideshow from "./homepageSlideshow.js";
+import {ready} from './utils.js';
+import homepageSlideshow from './slideshow.js';
 
 ready(() => {
   document.body.classList.add('ready');

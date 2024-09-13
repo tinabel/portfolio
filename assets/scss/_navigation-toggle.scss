@@ -1,0 +1,118 @@
+@use "sass:map";
+
+.navigation-toggle {
+  display: none;
+  height: 2.2813rem;
+  padding: 0;
+}
+
+@media (width <= 48rem) {
+  .navigation-toggle {
+    margin-left: 0.5rem;
+    color: $link;
+    transition: $transition;
+    width: min-content;
+
+    & {
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      justify-content: flex-end;
+      left: 0;
+      position: absolute;
+      top: 0.5rem;
+      z-index: 5;
+    }
+
+    .navigation-toggle__icon-text {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1rem;
+      margin-left: 0.25rem;
+      text-transform: uppercase;
+      width: min-content;
+    }
+
+    .navigation-toggle__icon-container {
+      display: inline-block;
+      height: 2.5rem;
+      position: relative;
+      width: 2.5rem;
+    }
+
+    svg {
+      background: transparent;
+      border: none;
+      display: block;
+      height: 2.5rem;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 2.5rem;
+    }
+
+    .navigation-toggle__close-icon {
+      transform: scale(0);
+      transition: transform 60ms;
+    }
+
+    .line {
+      stroke: $link;
+
+      & {
+        stroke-linecap: round;
+        stroke-width: 0.3125rem;
+        transform-origin: 50%;
+        transition: transform 60ms 60ms;
+      }
+    }
+  }
+
+  .navigation-toggle.is-open {
+    .navigation-toggle__menu-icon {
+      filter: url("#baseFilter");
+    }
+
+    .navigation-toggle__close-icon {
+      transform: scale(1);
+      transition: transform 60ms 60ms;
+    }
+
+    .line-1 {
+      transition: transform 60ms;
+    }
+
+    .line-2 {
+      transform: translateX(-1.125rem) translateY(-0.1875rem) rotate(45deg)
+        scale(0.7);
+    }
+
+    .line-3 {
+      transform: translateY(0) rotate(45deg) scale(0.7);
+    }
+
+    .line-4 {
+      transform: translateY(0) rotate(-45deg) scale(0.7);
+    }
+
+    .line-5 {
+      transform: translateX(1.125rem) translateY(0.1875rem) rotate(45deg)
+        scale(0.7);
+    }
+
+    .line-6 {
+      transform: translateX(-1.125rem) translateY(0.1875rem) rotate(-45deg)
+        scale(0.7);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation-toggle .close-icon,
+  .navigation-toggle.is-open .close-icon,
+  .navigation-toggle.is-open .line-1 {
+    transition: none;
+  }
+}

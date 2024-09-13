@@ -1,7 +1,7 @@
 .navigation {
 }
 
-.navigation--list {
+.navigation__list {
   display: flex;
   flex-flow: row wrap;
   align-items: space-around;
@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.navigation--list-item {
+.navigation__list-item {
   display: inline-block;
   list-style: none;
   width: auto;

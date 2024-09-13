@@ -1,6 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Cormorant+Unicase|IM+Fell+Great+Primer+SC|Raleway:400,400i,500,500i,700,700i");
-@import "./base";
-@import "./nav";
-@import "./slideshow";
-@import "./series-grid";
-@import "./focal_points";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import './base';
+@import './navigation';
+@import './navigation-link-item';
+@import './navigation-toggle';
+@import './slideshow';
+@import './image-grid';
+@import './focal_points';
+@import './full-image';
+@import './modal';

@@ -1,12 +1,14 @@
+@use "sass:map";
+
 .navigation {
 }
 
-.navigation--list {
+.navigation__list {
   display: flex;
   flex-flow: row wrap;
   align-items: space-around;
   justify-content: space-around;
-  background: #000;
+  background: $background;
   box-sizing: border-box;
   line-height: 2;
   list-style: none;
@@ -15,7 +17,7 @@
   width: 100%;
 }
 
-.navigation--list-item {
+.navigation__list-item {
   display: inline-block;
   list-style: none;
   width: auto;
@@ -23,17 +25,17 @@
   a {
     display: inline-block;
     width: auto;
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: map.get($fonts, "sans", "medium-heavy");
     letter-spacing: 0.05rem;
-    color: #aaa;
+    color: $link;
     text-decoration: none;
     text-transform: uppercase;
 
     &:hover,
     &:active,
     &:focus {
-      color: #eee;
+      color: $link-hover;
     }
   }
 }
