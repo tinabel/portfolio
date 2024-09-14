@@ -5,11 +5,15 @@
       <h3 class="modal__image-title">
         {{ image.series.title }} &mdash; {{ image.title }}
       </h3>
-      <img
-        alt="{{ image.alt }}"
-        class="modal__image"
-        src="/media/{{ image.image_file.name }}"
-      />
+      <div data-target="zoom" class="zoom">
+        <img
+          alt="{{ image.alt }}"
+          data-target="zoom-image"
+          class="modal__image"
+          src="/media/{{ image.image_file.name }}"
+        />
+        <div data-target="zoom-large-image" class="zoom__large-image"></div>
+      </div>
     </div>
     <button data-target="modal-close" class="modal__close">
       <span class="sr-only">Close</span>

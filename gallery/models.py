@@ -110,3 +110,11 @@ class Image(models.Model):
 
   def get_absolute_url(self):
     return reverse("image_view", kwargs={'slug': self.slug})
+
+class page(models.Model):
+  title = models.CharField(max_length=255)
+  content = models.TextField()
+  slug = models.SlugField(blank=True)
+
+  def __str__(self):
+    return self.title

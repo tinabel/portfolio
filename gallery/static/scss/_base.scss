@@ -24,6 +24,8 @@ main {
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
+  margin: auto;
+  max-width: 100rem;
   position: relative;
   top: 3rem;
   width: 100%;
@@ -116,6 +118,20 @@ footer {
     font-size: 1.25rem;
     font-weight: 300;
     margin-bottom: 1rem;
+
+    svg {
+      max-width: 3rem;
+      max-height: 3rem;
+    }
+
+    a svg {
+      fill: $link;
+    }
+
+    a:hover svg {
+      fill: $link-hover;
+      text-decoration: none;
+    }
   }
 
   ul {

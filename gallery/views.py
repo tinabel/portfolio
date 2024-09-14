@@ -27,6 +27,9 @@ def image_view(request, series_slug, image_slug):
   image = Image.objects.get(slug=image_slug)
   return render(request, 'image.html', {'image': image, 'image_slug': image_slug })
 
+def about_view(request):
+  return render(request, 'about.html')
+
 def contact(request):
   if request.method == 'POST':
     form = ContactForm(request.POST)
