@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'import_export',
     'rest_framework',
     'template_partials',
+    'markdownify.apps.MarkdownifyConfig',
 ]
 
 MIDDLEWARE = [
