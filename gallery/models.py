@@ -1,3 +1,4 @@
+import datetime
 from io import BytesIO
 import os
 from django.conf import settings
@@ -113,6 +114,7 @@ class Image(models.Model):
 
 class Page(models.Model):
   title = models.CharField(max_length=255)
+  date = models.DateField(default=datetime.date.today)
   content = models.TextField()
   slug = models.SlugField(blank=True)
 

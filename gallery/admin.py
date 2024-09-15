@@ -1,6 +1,6 @@
 from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
 from django.contrib import admin
-from .models import Image, Series, Medium
+from .models import Image, Series, Medium, Page
 from import_export import resources
 from django import forms
 
@@ -58,3 +58,24 @@ class ImageAdmin(ImportExportActionModelAdmin):
     return self.description
 
 admin.site.register(Image, ImageAdmin)
+
+
+class PageResource(resources.ModelResource):
+    class Meta:
+        model = Page
+        import_id_fields = [ 'title', 'date', 'content', 'slug']
+        skip_unchanged = True
+        use_bulk = True
+
+class PageAdmin(ImportExportActionModelAdmin):
+  resource_class = PageResource
+  fields = ('title', 'content', 'slug')
+  list_display = ('title', 'date', 'slug',)
+  list_filter = ('title', 'date', 'slug')
+  prepopulated_fields = {'slug': ('title',)}
+
+  def get_description(self):
+    return self.description
+
+admin.site.register(Page, PageAdmin)
+
