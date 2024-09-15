@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from rest_framework import viewsets
-from .models import Image, Series
+from .models import Image, Series, Page
 from .serializers import ImageSerializer
 from .forms import ContactForm
 
@@ -29,7 +30,7 @@ def image_view(request, series_slug, image_slug):
 
 def page_view(request, page_slug):
   content = Page.objects.get(slug=page_slug)
-  return render(request, 'page.html', {'page_slug': page_slug, 'content': content })
+  return render(request, 'page.html', {'page_slug': page_slug, 'page_content': content })
 
 def contact(request):
   if request.method == 'POST':

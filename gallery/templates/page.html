@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% load markdown_extras %}
+{% block body_class%}
+  page {{ page_content.slug }}
+{% endblock %}
+{% block main_content %}
+  <h2>{{ page_content.title }}</h2
+  {{ page_content.content | markdown | safe }}
+{% endblock %}
+

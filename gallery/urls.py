@@ -10,7 +10,7 @@ router.register(r'images', ImageViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path("", index, name="index"),
-    path("page/", page_view),
+    path("page/<slug:page_slug>", page_view),
     path("artwork/", artwork_view, name="artwork"),
     path("series/<slug:series_slug>", series_view),  # new
     path("series/<slug:series_slug>/image/<slug:image_slug>", image_view),  # new

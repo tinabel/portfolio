@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'import_export',
     'rest_framework',
     'template_partials',
-    'markdownify.apps.MarkdownifyConfig',
 ]
 
 MIDDLEWARE = [
@@ -144,7 +143,6 @@ TIME_ZONE = 'America/New_York'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
