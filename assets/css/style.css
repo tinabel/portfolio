@@ -776,7 +776,7 @@ button:hover path {
 }
 .modal__bg {
   backdrop-filter: blur(2.5px);
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.5);
   height: 100%;
   position: absolute;
   width: 100%;
@@ -789,7 +789,7 @@ button:hover path {
   display: flex;
   height: 100%;
   justify-content: center;
-  padding-top: 4rem;
+  padding: 4rem 1rem 1rem 1rem;
   position: relative;
   width: auto;
   z-index: 2;
@@ -812,6 +812,7 @@ button:hover path {
   text-align: center;
 }
 .modal__image {
+  border: 1px solid #555;
   height: 100%;
   max-height: 85vh;
   max-width: 85vw;

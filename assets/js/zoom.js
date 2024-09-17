@@ -2,13 +2,18 @@ const container = document.querySelector('[data-target="zoom"]');
 const originalImage = document.querySelector('[data-target="zoom-image"]');
 const largeImage = document.querySelector('[data-target="zoom-large-image"]');
 const ZOOM_ACTIVE_CLASS = 'active';
-const OFFSET = 2;
-const MAX_PERCENT = 95;
+
 let isZoomed = false;
 
 if (originalImage && largeImage) {
   largeImage.style.background = `url(${originalImage.src}) no-repeat #000`;
 }
+
+const styleIt = (el, styles = {}) => {
+  Object.keys(styles).forEach((key) => {
+    el.style[key] = styles[key];
+  });
+};
 
 const percentOf = (a, b) => {
   return Math.ceil((a * 100) / b);
@@ -38,9 +43,6 @@ const zoomIn = (event) => {
     right: imgRight
   } = el;
 
-  const imgPercentWidth = percentOf(imgWidth, originalWidth);
-  const imgPercentHeight = percentOf(imgHeight, originalHeight);
-
   let magnifierX = Number.parseInt(getComputedStyle(largeImage).width.split('px')[0]);
   let magnifierY = Number.parseInt(getComputedStyle(largeImage).height.split('px')[0]);
 
@@ -60,45 +62,40 @@ const zoomIn = (event) => {
   let backgroundX = `${xPercent}%`;
   let backgroundY = `${yPercent}%`;
 
-  console.log(xRel, yRel, xPercent, yPercent);
-  if (yRel <= imgTop + magnifierY) {
-    bubbleY = '1rem';
-    backgroundY = `calc(${yPercent}% - ${toRem(magnifierY) * 1.5}rem)`;
-    // backgroundY = `calc(${yPercent}% - ${toRem(magnifierY) + ((imgPercentHeight / 100) * (OFFSET * 2))}rem)`;
-  } else if (yRel >= (imgHeight - ((magnifierY / 2) + 64))) {
-    console.log("BOTTOM EDGE HIT");
-    // bubbleY = `${yRel - (magnifierY + 32);} px`;
-    backgroundY = `calc(${yPercent}% - ${toRem(magnifierY)}rem)`;
+  if (yRel <= magnifierY / 4) {
+    bubbleY = '0';
+    backgroundY = `calc(${yPercent}% + 3rem)`;
+  } else if (yRel >= (imgHeight - magnifierY)) {
+    bubbleY = `${imgHeight - (magnifierY + 3)}px`;
+    backgroundY = `calc(${yPercent}% - 3rem)`;
   } else {
-    bubbleY = `${yRel - (OFFSET * 2)} px`;
-    backgroundY = `calc(${yPercent}% )`;
+    bubbleY = `${yRel}px`;
+    backgroundY = `${yPercent}%`;
   }
 
 
-  if (xRel <= ((imgLeft - 1) + (magnifierX / 2))) {
+  if (xRel <= magnifierX / 2) {
     // LEFT
-    console.log("LEFT EDGE HIT");
-    bubbleX = '1rem';
-    backgroundX = `calc(${xPercent}% - 1rem)`;
-    // backgroundX = `calc(${xPercent}% + ${(imgPercentWidth / 100) * (OFFSET * 2)}rem)`;
-  } else if (xRel >= (imgWidth - (magnifierX + 16))) {
+    bubbleX = '0';
+    backgroundX = `calc(${xPercent}% + 3rem - 3px)`;
+
+  } else if (xRel <= imgWidth && xRel >= (imgWidth - (magnifierX))) {
     // RIGHT
-    console.log("RIGHT EDGE HIT");
-    // bubbleX = `${xRel - (magnifierX + 32);} px`;
-    backgroundX = `calc(${xPercent}% + ${magnifierX + 64}px)`;
+    bubbleX = `${imgWidth - (magnifierX + 3)}px`;
+    backgroundX = `calc(${xPercent}% - 3rem)`;
   } else {
-    // bubbleX = `${xRel;} px`;
-    backgroundX = `calc(${xPercent}% + ${magnifierX - (OFFSET * 16)}px)`;
+    bubbleX = `${xRel}px`;
+    backgroundX = `${xPercent}%`;
   }
 
-
-  largeImage.style.display = 'block';
-  largeImage.style.backgroundPositionX = backgroundX;
-  largeImage.style.backgroundPositionY = backgroundY;
-  largeImage.style.left = `${bubbleX}`;
-  largeImage.style.top = `${bubbleY}`;
-  // largeImage.style.transform = `translate(${bubbleX}, ${bubbleY})`;
-  largeImage.style.transition = 'opacity 1s ease, left 0.25s ease';
+  styleIt(largeImage, {
+    display: 'block',
+    backgroundPositionX: backgroundX,
+    backgroundPositionY: backgroundY,
+    left: bubbleX,
+    top: bubbleY,
+    transition: 'opacity 1s ease, left 0.25s ease'
+  });
   container.classList.add(ZOOM_ACTIVE_CLASS);
 };
 
@@ -117,5 +114,5 @@ export const zoomInit = () => {
     console.error('Zoom container not found');
     return;
   }
-  container.addEventListener('click', zoom);
-};;;
+  originalImage.addEventListener('click', zoom);
+};
