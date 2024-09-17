@@ -66,6 +66,7 @@ p {
 .page p {
   font-size: 1.25rem;
   font-weight: 300;
+  line-height: 1.5;
   max-width: 60rem;
 }
 
@@ -95,6 +96,7 @@ nav {
 footer {
   display: block;
   margin-top: 5rem;
+  text-align: center;
   width: 100%;
 }
 
@@ -115,19 +117,27 @@ footer {
 }
 
 footer {
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
 }
 footer p {
+  display: flex;
   font-size: 1.25rem;
   font-weight: 300;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 footer p svg {
-  max-width: 3rem;
   max-height: 3rem;
+  max-width: 3rem;
 }
 footer p a svg {
   fill: #aaa;
+}
+footer p a:hover {
+  text-decoration: none;
 }
 footer p a:hover svg {
   fill: #eee;
@@ -862,16 +872,18 @@ button:hover path {
 }
 .zoom__large-image {
   aspect-ratio: 1/1;
-  border: 4px solid #555;
+  border: 1px solid #555;
   border-radius: 100%;
   box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
   display: block;
   height: auto;
+  left: 0;
   opacity: 0;
   pointer-events: none;
   position: absolute;
-  transition: opacity 0.2s;
-  width: 16rem;
+  top: 0;
+  transition: opacity 0.2s ease;
+  width: 30%;
   z-index: 99;
 }
 .zoom.active {
