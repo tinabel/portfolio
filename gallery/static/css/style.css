@@ -163,10 +163,25 @@ footer li {
     top: -4.4rem;
     z-index: 10;
   }
-  header > h1 {
-    font-size: 1.5rem;
+  header {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+  }
+  header h1 {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
     font-size: 5vw;
-    margin-top: 0.5rem;
+    height: 2.5rem;
+    justify-content: flex-end;
+    margin: 0.5rem;
+    text-align: end;
+    width: 100%;
+  }
+  footer {
+    margin-top: 1rem;
   }
 }
 .navigation {
@@ -413,6 +428,7 @@ footer li {
   width: 100%;
 }
 .slideshow .featured-image {
+  cursor: pointer;
   height: 100%;
   list-style: none;
   margin: 0;
@@ -428,9 +444,10 @@ footer li {
   will-change: transition;
 }
 .slideshow .featured-image img {
-  max-width: 100%;
+  height: auto;
+  min-height: 100%;
   position: absolute;
-  width: 100%;
+  min-width: 100%;
 }
 .slideshow .featured-image .image-title {
   background: rgba(0, 0, 0, 0.65);
@@ -454,6 +471,7 @@ footer li {
   opacity: 1;
   pointer-events: fill;
   transition: opacity 1s ease-in-out;
+  z-index: 10;
 }
 .slideshow .featured-image.active .image-title {
   display: block;
@@ -529,12 +547,32 @@ button:hover path {
     min-height: auto;
   }
   .slideshow .featured-images {
-    height: 30vh;
+    height: 65vh;
     min-height: 30rem;
   }
-  .slideshow .play-pause svg {
-    aspect-ratio: 1/1;
-    width: 10vw;
+  .slideshow .featured-image {
+    display: none;
+  }
+  .slideshow .featured-image .image-title {
+    display: none;
+    visibility: hidden;
+  }
+  .slideshow .featured-image.active {
+    display: block;
+    z-index: 10;
+  }
+  .slideshow .featured-image.active .image-title {
+    display: block;
+    visibility: visible;
+  }
+  .slideshow img {
+    height: auto;
+    position: absolute;
+    max-width: 150%;
+    min-width: 100%;
+  }
+  .slideshow .slideshow-info {
+    display: none;
   }
 }
 .image-grid {
@@ -583,6 +621,7 @@ button:hover path {
 .image-grid .image-grid__link .image-grid__title {
   align-self: center;
   background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(0.015rem);
   box-sizing: border-box;
   color: #fff;
   display: none;
@@ -601,6 +640,7 @@ button:hover path {
   text-shadow: 4px 6px 6px rgba(0, 0, 0, 0.66);
   text-transform: uppercase;
   top: 0;
+  transition: background backdrop-filter 0.5s ease-in-out;
   width: 100%;
   z-index: 5;
 }

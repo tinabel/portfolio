@@ -70,6 +70,7 @@ p {
   p {
     font-size: 1.25rem;
     font-weight: 300;
+    line-height: 1.5;
     max-width: 60rem;
   }
 }
@@ -100,6 +101,7 @@ nav {
 footer {
   display: block;
   margin-top: 5rem;
+  text-align: center;
   width: 100%;
 }
 
@@ -120,25 +122,35 @@ footer {
 }
 
 footer {
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
 
   p {
+    display: flex;
     font-size: 1.25rem;
     font-weight: 300;
+    gap: 1rem;
     margin-bottom: 1rem;
 
     svg {
-      max-width: 3rem;
       max-height: 3rem;
+      max-width: 3rem;
     }
 
-    a svg {
-      fill: $link;
+    a {
+      svg {
+        fill: $link;
+      }
     }
 
-    a:hover svg {
-      fill: $link-hover;
+    a:hover {
       text-decoration: none;
+      svg {
+        fill: $link-hover;
+        text-decoration: none;
+      }
     }
   }
 
@@ -164,9 +176,27 @@ footer {
     top: -4.4rem;
     z-index: 10;
   }
-  header > h1 {
-    font-size: 1.5rem;
-    font-size: 5vw;
-    margin-top: 0.5rem;
+
+  header {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+
+    h1 {
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      font-size: 5vw;
+      height: 2.5rem;
+      justify-content: flex-end;
+      margin: 0.5rem;
+      text-align: end;
+      width: 100%;
+    }
+  }
+
+  footer {
+    margin-top: 1rem;
   }
 }

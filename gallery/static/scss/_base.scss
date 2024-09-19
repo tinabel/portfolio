@@ -176,9 +176,27 @@ footer {
     top: -4.4rem;
     z-index: 10;
   }
-  header > h1 {
-    font-size: 1.5rem;
-    font-size: 5vw;
-    margin-top: 0.5rem;
+
+  header {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+
+    h1 {
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      font-size: 5vw;
+      height: 2.5rem;
+      justify-content: flex-end;
+      margin: 0.5rem;
+      text-align: end;
+      width: 100%;
+    }
+  }
+
+  footer {
+    margin-top: 1rem;
   }
 }

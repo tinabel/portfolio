@@ -111,7 +111,6 @@ const zoom = () => {
 
 export const zoomInit = () => {
   if (!container) {
-    console.error('Zoom container not found');
     return;
   }
   originalImage.addEventListener('click', zoom);

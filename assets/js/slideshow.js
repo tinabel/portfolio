@@ -3,8 +3,8 @@ export const slideshow = () => {
   const playButton = document.querySelector('[data-target="play"]');
   const pauseButton = document.querySelector('[data-target="pause"]');
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  console.log(playButton);
   const hasSlides = slides.length > 0 && playButton && pauseButton;
+  const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
 
   if (hasSlides) {
     slides[0].classList.add('active');
@@ -23,6 +23,11 @@ export const slideshow = () => {
       }
     });
     currentSlide = (slideIndex + slides.length) % slides.length;
+  };
+
+  const randomSlide = () => {
+    currentSlide = Math.floor(Math.random() * slides.length);
+    slides[currentSlide].classList.add('active');
   };
 
   const nextSlide = () => {
@@ -52,7 +57,7 @@ export const slideshow = () => {
   };
 
   // Add event listeners for forward, backward, and stop buttons
-  if (hasSlides) {
+  if (hasSlides && !isMobile) {
     playButton.addEventListener('click', () => {
       nextSlide();
       startSlideshow();
@@ -70,9 +75,13 @@ export const slideshow = () => {
       startSlideshow();
     });
 
-    if (!prefersReducedMotion) {
+    if (!prefersReducedMotion && !isMobile) {
       startSlideshow();
     }
+  }
+
+  if (hasSlides && isMobile) {
+    randomSlide();
   }
 };
 

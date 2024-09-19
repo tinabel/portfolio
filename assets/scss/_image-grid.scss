@@ -45,6 +45,7 @@
     .image-grid__title {
       align-self: center;
       background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(0.015rem);
       box-sizing: border-box;
       color: #fff;
       display: none;
@@ -63,6 +64,7 @@
       text-shadow: 4px 6px 6px rgba(0, 0, 0, 0.66);
       text-transform: uppercase;
       top: 0;
+      transition: background backdrop-filter 0.5s ease-in-out;
       width: 100%;
       z-index: 5;
     }

@@ -20,6 +20,7 @@
   }
 
   .featured-image {
+    cursor: pointer;
     height: 100%;
     list-style: none;
     margin: 0;
@@ -35,9 +36,10 @@
     will-change: transition;
 
     img {
-      max-width: 100%;
+      height: auto;
+      min-height: 100%;
       position: absolute;
-      width: 100%;
+      min-width: 100%;
     }
 
     .image-title {
@@ -63,6 +65,7 @@
       opacity: 1;
       pointer-events: fill;
       transition: opacity 1s ease-in-out;
+      z-index: 10;
 
       .image-title {
         display: block;
@@ -152,15 +155,39 @@ button {
     min-height: auto;
 
     .featured-images {
-      height: 30vh;
+      height: 65vh;
       min-height: 30rem;
     }
 
-    .play-pause {
-      svg {
-        aspect-ratio: 1/1;
-        width: 10vw;
+    .featured-image {
+      display: none;
+
+      .image-title {
+        display: none;
+        visibility: hidden;
       }
+
+      &.active {
+        display: block;
+        z-index: 10;
+
+        .image-title {
+          display: block;
+          visibility: visible;
+        }
+      }
+    }
+
+    img {
+      height: auto;
+      // min-height: 100%;
+      position: absolute;
+      max-width: 150%;
+      min-width: 100%;
+    }
+
+    .slideshow-info {
+      display: none;
     }
   }
 }
