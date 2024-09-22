@@ -10,6 +10,10 @@ export const modalInit = () => {
 
   const trigger = document.querySelector('[data-target="modal-trigger"]');
 
+  trigger.addEventListener('touchstart', function(event) {
+    event.preventDefault();
+  });
+
   trigger.addEventListener('click', function(event) {
     event.preventDefault();
     modal.classList.add('open');

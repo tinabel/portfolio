@@ -29,27 +29,28 @@ const zoomIn = (event) => {
     return;
   }
 
+
   const el = event.target.getBoundingClientRect();
-
-  const originalWidth = originalImage.naturalWidth;
-  const originalHeight = originalImage.naturalHeight;
-
   const {
     width: imgWidth,
     height: imgHeight,
-    left: imgLeft,
-    top: imgTop,
-    bottom: imgBottom,
-    right: imgRight
   } = el;
 
   let magnifierX = Number.parseInt(getComputedStyle(largeImage).width.split('px')[0]);
   let magnifierY = Number.parseInt(getComputedStyle(largeImage).height.split('px')[0]);
 
-  const cursorX = event.pageX;
-  const cursorY = event.pageY;
-  const xRel = cursorX - (el.left);
-  const yRel = cursorY - (el.top);
+  if (event.type === 'touchmove') {
+    const force = event.changedTouches[0].force;
+    const img = event.changedTouches[0].target;
+    if (img && force > 0.1) {
+      event.preventDefault();
+      console.log('prevented 3D touch on element with id = ' + id);
+    }
+  }
+  const cursorX = event.type === 'touchmove' ? event.touches[0].clientX : event.pageX;
+  const cursorY = event.type === 'touchmove' ? event.touches[0].clientY : event.pageY;
+  const xRel = event.type === 'touchmove' ? event.touches[0].clientX - el.left : cursorX - el.left;
+  const yRel = event.type === 'touchmove' ? event.touches[0].clientY - el.top : cursorY - el.top;
   const xPercent = percentOf(xRel, imgWidth);
   const yPercent = percentOf(yRel, imgHeight);
 
@@ -78,7 +79,6 @@ const zoomIn = (event) => {
     // LEFT
     bubbleX = '0';
     backgroundX = `calc(${xPercent}% + 3rem - 3px)`;
-
   } else if (xRel <= imgWidth && xRel >= (imgWidth - (magnifierX))) {
     // RIGHT
     bubbleX = `${imgWidth - (magnifierX + 3)}px`;
@@ -94,18 +94,27 @@ const zoomIn = (event) => {
     backgroundPositionY: backgroundY,
     left: bubbleX,
     top: bubbleY,
-    transition: 'opacity 1s ease, left 0.25s ease'
+    transition: 'opacity 1s ease'
+  });
+
+  styleIt(originalImage, {
+    PointerEvents: event === 'touchmove' ? 'none' : 'auto',
+    userSelect: 'none'
+
   });
   container.classList.add(ZOOM_ACTIVE_CLASS);
+  event.preventDefault();
+  event.stopPropagation();
 };
 
 const zoom = () => {
   isZoomed = !isZoomed;
-  container.classList.toggle(ZOOM_ACTIVE_CLASS);
   if (isZoomed) {
     container.addEventListener('mousemove', zoomIn);
+    container.addEventListener('touchmove', zoomIn, false);
   } else {
     container.removeEventListener('mousemove', zoomIn);
+    container.removeEventListener('touchmove', zoomIn, false);
   }
 };
 
@@ -113,5 +122,13 @@ export const zoomInit = () => {
   if (!container) {
     return;
   }
-  originalImage.addEventListener('click', zoom);
+
+  if (!isZoomed) {
+    originalImage.addEventListener('click', zoom);
+    originalImage.addEventListener('touchstart', zoom);
+
+  } else {
+    originalImage.removeEventListener('click', zoom);
+    originalImage.removeEventListener('touchstart', zoom);
+  }
 };

@@ -173,6 +173,7 @@ footer {
 
 @media screen and (width <= 48rem) {
   main {
+    margin-bottom: -2rem;
     top: -4.4rem;
     z-index: 10;
   }

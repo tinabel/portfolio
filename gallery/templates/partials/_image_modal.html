@@ -9,7 +9,8 @@
         <img
           alt="{{ image.alt }}"
           data-target="zoom-image"
-          class="modal__image"
+          draggable="false"
+          class="modal__image zoom__original-image"
           src="/media/{{ image.image_file.name }}"
         />
         <div data-target="zoom-large-image" class="zoom__large-image"></div>
