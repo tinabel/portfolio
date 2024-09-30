@@ -162,6 +162,8 @@ button {
     .featured-images {
       height: 65vh;
       min-height: 30rem;
+      width: 100%;
+      overflow: hidden;
     }
 
     .featured-image {
@@ -185,8 +187,10 @@ button {
 
     img {
       height: auto;
-      // min-height: 100%;
+      image-rendering: optimizequality;
+      object-fit: cover;
       position: absolute;
+      max-height: 150%;
       max-width: 150%;
       min-width: 100%;
     }

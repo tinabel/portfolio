@@ -168,6 +168,7 @@ footer li {
     align-items: flex-start;
     display: flex;
     flex-flow: row wrap;
+    height: 3.5rem;
     padding: 0;
   }
   header h1 {
@@ -178,6 +179,8 @@ footer li {
     height: 2.5rem;
     justify-content: flex-end;
     margin: 0.5rem;
+    position: fixed;
+    right: 0.25rem;
     text-align: end;
     width: 100%;
   }
@@ -343,8 +346,9 @@ footer li {
     display: inline-block;
     font-size: 1rem;
     font-weight: 600;
+    left: 0.5rem;
     letter-spacing: 0.1rem;
-    margin-left: 0.25rem;
+    position: relative;
     text-transform: uppercase;
     width: min-content;
   }
@@ -554,6 +558,8 @@ button:hover path {
   .slideshow .featured-images {
     height: 65vh;
     min-height: 30rem;
+    width: 100%;
+    overflow: hidden;
   }
   .slideshow .featured-image {
     display: none;
@@ -572,7 +578,10 @@ button:hover path {
   }
   .slideshow img {
     height: auto;
+    image-rendering: optimizequality;
+    object-fit: cover;
     position: absolute;
+    max-height: 150%;
     max-width: 150%;
     min-width: 100%;
   }
