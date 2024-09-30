@@ -519,8 +519,9 @@ button {
   background: transparent;
   border: 0;
   cursor: pointer;
-  height: 5rem;
-  width: 5rem;
+  height: 10vh;
+  max-height: 5rem;
+  max-width: 5rem;
 }
 button.hidden {
   display: none;

@@ -491,6 +491,9 @@ footer li {
   width: 90%;
   z-index: 10;
 }
+.slideshow .slideshow-info .play-pause {
+  display: inline-flex;
+}
 .slideshow.prev {
   border-right: 1px solid rgba(0, 0, 0, 0.5);
   margin-right: auto;
@@ -519,8 +522,9 @@ button {
   background: transparent;
   border: 0;
   cursor: pointer;
-  height: 5rem;
-  width: 5rem;
+  height: 100%;
+  max-height: 5rem;
+  max-width: 5rem;
 }
 button.hidden {
   display: none;
@@ -528,7 +532,7 @@ button.hidden {
 button svg {
   aspect-ratio: 1/1;
   pointer-events: none;
-  width: 8vw;
+  width: 5vw;
 }
 button path {
   fill: rgba(170, 170, 170, 0.75);
