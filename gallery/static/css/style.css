@@ -389,6 +389,7 @@ footer li {
     transition: transform 60ms 60ms;
   }
   .navigation-toggle.is-open .line-1 {
+    transform: translateX(-0.55rem) translateY(0.22rem) rotate(45deg) scale(0.7);
     transition: transform 60ms;
   }
   .navigation-toggle.is-open .line-2 {
