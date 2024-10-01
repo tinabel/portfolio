@@ -961,7 +961,7 @@ button:hover path {
   position: absolute;
   top: 0;
   transition: opacity 0.1s ease;
-  width: 30%;
+  width: 15rem;
   z-index: 99;
 }
 .zoom.active {

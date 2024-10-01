@@ -24,12 +24,6 @@ const toRem = (value) => {
 };
 
 const zoomIn = (event) => {
-  if (!isZoomed) {
-    container.classList.remove(ZOOM_ACTIVE_CLASS);
-    return;
-  }
-
-
   const el = event.target.getBoundingClientRect();
   const {
     width: imgWidth,
@@ -39,18 +33,10 @@ const zoomIn = (event) => {
   let magnifierX = Number.parseInt(getComputedStyle(largeImage).width.split('px')[0]);
   let magnifierY = Number.parseInt(getComputedStyle(largeImage).height.split('px')[0]);
 
-  if (event.type === 'touchmove') {
-    const force = event.changedTouches[0].force;
-    const img = event.changedTouches[0].target;
-    if (img && force > 0.1) {
-      event.preventDefault();
-      console.log('prevented 3D touch on element with id = ' + id);
-    }
-  }
-  const cursorX = event.type === 'touchmove' ? event.touches[0].clientX : event.pageX;
-  const cursorY = event.type === 'touchmove' ? event.touches[0].clientY : event.pageY;
-  const xRel = event.type === 'touchmove' ? event.touches[0].clientX - el.left : cursorX - el.left;
-  const yRel = event.type === 'touchmove' ? event.touches[0].clientY - el.top : cursorY - el.top;
+  const cursorX = event.pageX;
+  const cursorY = event.pageY;
+  const xRel = cursorX - el.left;
+  const yRel = cursorY - el.top;
   const xPercent = percentOf(xRel, imgWidth);
   const yPercent = percentOf(yRel, imgHeight);
 
@@ -98,13 +84,11 @@ const zoomIn = (event) => {
   });
 
   styleIt(originalImage, {
-    PointerEvents: event === 'touchmove' ? 'none' : 'auto',
+    PointerEvents: 'auto',
     userSelect: 'none'
-
   });
+
   container.classList.add(ZOOM_ACTIVE_CLASS);
-  event.preventDefault();
-  event.stopPropagation();
 };
 
 const zoom = () => {
@@ -112,11 +96,9 @@ const zoom = () => {
   if (isZoomed) {
     container.classList.add(ZOOM_ACTIVE_CLASS);
     container.addEventListener('mousemove', zoomIn);
-    container.addEventListener('touchmove', zoomIn, false);
   } else {
     container.classList.remove(ZOOM_ACTIVE_CLASS);
     container.removeEventListener('mousemove', zoomIn);
-    container.removeEventListener('touchmove', zoomIn, false);
   }
 };
 
@@ -127,10 +109,8 @@ export const zoomInit = () => {
 
   if (!isZoomed) {
     originalImage.addEventListener('click', zoom);
-    originalImage.addEventListener('touchstart', zoom);
 
   } else {
     originalImage.removeEventListener('click', zoom);
-    originalImage.removeEventListener('touchstart', zoom);
   }
 };

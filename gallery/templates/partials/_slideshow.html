@@ -13,8 +13,11 @@
       >
         <img
           alt="{{ image.alt }}"
+          style="background-color: rgba{{ image.get_dominant_color }}"
           class="{{ image.get_focal_point_class }}"
-          src="/media/{{ image.image_file }}"
+          data-src="/media/{{ image.image_file }}"
+          data-target="lazy-image"
+          src=""
           />
         <span class="image-title">
           {{ image.series.title }} &mdash; {{ image.title }}

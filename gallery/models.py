@@ -6,6 +6,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils.html import mark_safe
+from .image_utility import ImageUtility
 
 class Medium(models.Model):
   name = models.CharField(max_length=255)
@@ -100,6 +101,9 @@ class Image(models.Model):
     else:
       focal_point_classname = self.image_focal_point.replace('_','-')
     return focal_point_classname
+
+  def get_dominant_color(self):
+    return ImageUtility.dominant_color(self.image_file.name)
 
   def __str__(self):
     return self.title

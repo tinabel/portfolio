@@ -8,6 +8,7 @@
       <div data-target="zoom" class="zoom">
         <img
           alt="{{ image.alt }}"
+          style="background-color: rgba{{ image.get_dominant_color }}"
           data-target="zoom-image"
           draggable="false"
           class="modal__image zoom__original-image"

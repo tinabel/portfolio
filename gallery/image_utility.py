@@ -6,6 +6,14 @@ class ImageUtility:
   def thumbnail_path(image_path):
     return os.path.join(settings.MEDIA_ROOT,"thumbnails", os.path.basename(image_path))
 
+  def dominant_color(image_path):
+    image_path = settings.MEDIA_ROOT + '/' + image_path
+    pil_img = Image.open(image_path)
+    img = pil_img.copy()
+    img = img.convert("RGBA")
+    img = img.resize((1, 1), resample=0)
+    dominant_color = img.getpixel((0, 0))
+    return dominant_color
 
   def scale_image(image_path):
     """Resize an image to have a maximum size of 480px while preserving aspect ratio."""

@@ -8,8 +8,11 @@
             <a href="/series/{{ image.series.slug }}/image/{{ image.slug }}" class="image-grid__link">
         {% endif %}
           <img
-            src="/media/{{ image.thumbnail_image.name }}"
             alt="{{ image.title }}"
+            style="background-color: rgba{{ image.get_dominant_color }}"
+            data-src="/media/{{ image.thumbnail_image.name }}"
+            data-target="lazy-image"
+            src=""
             class="image-grid__image {{ image.get_focal_point_class }}"
           />
           <span class="image-grid__title">
