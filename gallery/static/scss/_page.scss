@@ -1,0 +1,19 @@
+.page__back-link {
+  align-items: center;
+  color: $link;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.25rem;
+  justify-content: center;
+  margin: 1.5rem auto 0 0;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  width: max-content;
+
+  svg {
+    fill: $link;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    width: 1.5rem;
+  }
+}

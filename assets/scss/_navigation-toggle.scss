@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 .navigation-toggle {
   display: none;
@@ -29,8 +29,9 @@
       display: inline-block;
       font-size: 1rem;
       font-weight: 600;
+      left: 0.5rem;
       letter-spacing: 0.1rem;
-      margin-left: 0.25rem;
+      position: relative;
       text-transform: uppercase;
       width: min-content;
     }
@@ -72,7 +73,7 @@
 
   .navigation-toggle.is-open {
     .navigation-toggle__menu-icon {
-      filter: url("#baseFilter");
+      filter: url('#baseFilter');
     }
 
     .navigation-toggle__close-icon {
@@ -81,6 +82,8 @@
     }
 
     .line-1 {
+      transform: translateX(-0.55rem) translateY(0.22rem) rotate(45deg)
+        scale(0.7);
       transition: transform 60ms;
     }
 

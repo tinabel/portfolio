@@ -8,6 +8,7 @@ body {
 
 html {
   font-size: 16px;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -693,9 +694,9 @@ button:hover path {
 .top {
   top: 0;
   bottom: auto;
-  margin: 0 auto auto;
-  left: 0;
-  right: 0;
+  margin: auto;
+  left: -50%;
+  right: -50%;
 }
 .top-left {
   top: 0;
@@ -707,30 +708,30 @@ button:hover path {
 .top-right {
   top: 0;
   bottom: auto;
-  margin: 0 auto auto;
+  margin: auto;
   right: 0;
   left: auto;
 }
 
 .center {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
-  left: 0;
-  right: 0;
+  left: -50%;
+  right: -50%;
 }
 
 .left {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
   left: 0;
   right: auto;
 }
 
 .right {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
   left: auto;
   right: 0;
@@ -740,13 +741,13 @@ button:hover path {
   bottom: 0;
   top: auto;
   margin: auto auto 0 auto;
-  left: 0;
-  right: 0;
+  left: -50%;
+  right: -50%;
 }
 .bottom-left {
   bottom: 0;
   top: auto;
-  margin: auto auto 0 auto;
+  margin: auto;
   left: 0;
   right: auto;
 }
@@ -807,6 +808,25 @@ button:hover path {
     width: 100%;
   }
 }
+.page__back-link {
+  align-items: center;
+  color: #aaa;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.25rem;
+  justify-content: center;
+  margin: 1.5rem auto 0 0;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  width: max-content;
+}
+.page__back-link svg {
+  fill: #aaa;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  width: 1.5rem;
+}
+
 .modal-open {
   overflow: hidden;
 }
@@ -940,7 +960,7 @@ button:hover path {
   pointer-events: none;
   position: absolute;
   top: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.1s ease;
   width: 30%;
   z-index: 99;
 }

@@ -1,9 +1,9 @@
 .top {
   top: 0;
   bottom: auto;
-  margin: 0 auto auto;
-  left: 0;
-  right: 0;
+  margin: auto;
+  left: -50%;
+  right: -50%;
 
   &-left {
     top: 0;
@@ -16,29 +16,30 @@
   &-right {
     top: 0;
     bottom: auto;
-    margin: 0 auto auto;
+    margin: auto;
     right: 0;
     left: auto;
   }
 }
 
 .center {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
-  left: 0;
-  right: 0;
+  left: -50%;
+  right: -50%;
 }
 .left {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
   left: 0;
   right: auto;
 }
+
 .right {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
   left: auto;
   right: 0;
@@ -48,16 +49,17 @@
   bottom: 0;
   top: auto;
   margin: auto auto 0 auto;
-  left: 0;
-  right: 0;
+  left: -50%;
+  right: -50%;
 
   &-left {
     bottom: 0;
     top: auto;
-    margin: auto auto 0 auto;
+    margin: auto;
     left: 0;
     right: auto;
   }
+
   &-right {
     bottom: 0;
     top: auto;

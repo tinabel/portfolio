@@ -94,7 +94,7 @@ const zoomIn = (event) => {
     backgroundPositionY: backgroundY,
     left: bubbleX,
     top: bubbleY,
-    transition: 'opacity 1s ease'
+    transition: 'opacity 0.25s ease'
   });
 
   styleIt(originalImage, {
@@ -110,9 +110,11 @@ const zoomIn = (event) => {
 const zoom = () => {
   isZoomed = !isZoomed;
   if (isZoomed) {
+    container.classList.add(ZOOM_ACTIVE_CLASS);
     container.addEventListener('mousemove', zoomIn);
     container.addEventListener('touchmove', zoomIn, false);
   } else {
+    container.classList.remove(ZOOM_ACTIVE_CLASS);
     container.removeEventListener('mousemove', zoomIn);
     container.removeEventListener('touchmove', zoomIn, false);
   }

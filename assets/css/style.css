@@ -8,6 +8,7 @@ body {
 
 html {
   font-size: 16px;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -168,6 +169,7 @@ footer li {
     align-items: flex-start;
     display: flex;
     flex-flow: row wrap;
+    height: 3.5rem;
     padding: 0;
   }
   header h1 {
@@ -178,6 +180,8 @@ footer li {
     height: 2.5rem;
     justify-content: flex-end;
     margin: 0.5rem;
+    position: fixed;
+    right: 0.25rem;
     text-align: end;
     width: 100%;
   }
@@ -343,8 +347,9 @@ footer li {
     display: inline-block;
     font-size: 1rem;
     font-weight: 600;
+    left: 0.5rem;
     letter-spacing: 0.1rem;
-    margin-left: 0.25rem;
+    position: relative;
     text-transform: uppercase;
     width: min-content;
   }
@@ -385,6 +390,7 @@ footer li {
     transition: transform 60ms 60ms;
   }
   .navigation-toggle.is-open .line-1 {
+    transform: translateX(-0.55rem) translateY(0.22rem) rotate(45deg) scale(0.7);
     transition: transform 60ms;
   }
   .navigation-toggle.is-open .line-2 {
@@ -491,6 +497,9 @@ footer li {
   width: 90%;
   z-index: 10;
 }
+.slideshow .slideshow-info .play-pause {
+  display: inline-flex;
+}
 .slideshow.prev {
   border-right: 1px solid rgba(0, 0, 0, 0.5);
   margin-right: auto;
@@ -519,7 +528,7 @@ button {
   background: transparent;
   border: 0;
   cursor: pointer;
-  height: 10vh;
+  height: 100%;
   max-height: 5rem;
   max-width: 5rem;
 }
@@ -529,7 +538,7 @@ button.hidden {
 button svg {
   aspect-ratio: 1/1;
   pointer-events: none;
-  width: 8vw;
+  width: 5vw;
 }
 button path {
   fill: rgba(170, 170, 170, 0.75);
@@ -551,6 +560,8 @@ button:hover path {
   .slideshow .featured-images {
     height: 65vh;
     min-height: 30rem;
+    width: 100%;
+    overflow: hidden;
   }
   .slideshow .featured-image {
     display: none;
@@ -569,7 +580,10 @@ button:hover path {
   }
   .slideshow img {
     height: auto;
+    image-rendering: optimizequality;
+    object-fit: cover;
     position: absolute;
+    max-height: 150%;
     max-width: 150%;
     min-width: 100%;
   }
@@ -623,7 +637,7 @@ button:hover path {
 .image-grid .image-grid__link .image-grid__title {
   align-self: center;
   background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(0.015rem);
+  backdrop-filter: blur(0.025rem);
   box-sizing: border-box;
   color: #fff;
   display: none;
@@ -680,9 +694,9 @@ button:hover path {
 .top {
   top: 0;
   bottom: auto;
-  margin: 0 auto auto;
-  left: 0;
-  right: 0;
+  margin: auto;
+  left: -50%;
+  right: -50%;
 }
 .top-left {
   top: 0;
@@ -694,30 +708,30 @@ button:hover path {
 .top-right {
   top: 0;
   bottom: auto;
-  margin: 0 auto auto;
+  margin: auto;
   right: 0;
   left: auto;
 }
 
 .center {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
-  left: 0;
-  right: 0;
+  left: -50%;
+  right: -50%;
 }
 
 .left {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
   left: 0;
   right: auto;
 }
 
 .right {
-  top: 0;
-  bottom: 0;
+  top: -50%;
+  bottom: -50%;
   margin: auto;
   left: auto;
   right: 0;
@@ -727,13 +741,13 @@ button:hover path {
   bottom: 0;
   top: auto;
   margin: auto auto 0 auto;
-  left: 0;
-  right: 0;
+  left: -50%;
+  right: -50%;
 }
 .bottom-left {
   bottom: 0;
   top: auto;
-  margin: auto auto 0 auto;
+  margin: auto;
   left: 0;
   right: auto;
 }
@@ -794,6 +808,25 @@ button:hover path {
     width: 100%;
   }
 }
+.page__back-link {
+  align-items: center;
+  color: #aaa;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.25rem;
+  justify-content: center;
+  margin: 1.5rem auto 0 0;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  width: max-content;
+}
+.page__back-link svg {
+  fill: #aaa;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  width: 1.5rem;
+}
+
 .modal-open {
   overflow: hidden;
 }
@@ -927,7 +960,7 @@ button:hover path {
   pointer-events: none;
   position: absolute;
   top: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.1s ease;
   width: 30%;
   z-index: 99;
 }
