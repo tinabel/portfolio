@@ -651,6 +651,7 @@ button:hover path {
   min-height: 2rem;
   opacity: 0;
   padding: 3rem 0.5rem 0.5rem 0.5rem;
+  pointer-events: none;
   position: absolute;
   text-align: center;
   text-decoration: none;
