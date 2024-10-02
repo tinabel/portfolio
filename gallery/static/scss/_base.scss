@@ -88,6 +88,11 @@ header {
 
 header h1 {
   font-size: 3rem;
+
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 }
 
 h2 {

@@ -84,6 +84,10 @@ header {
 header h1 {
   font-size: 3rem;
 }
+header h1 a:hover {
+  color: #fff;
+  text-decoration: none;
+}
 
 h2 {
   font-size: 2rem;
