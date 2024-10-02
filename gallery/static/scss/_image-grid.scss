@@ -48,7 +48,7 @@
       backdrop-filter: blur(0.025rem);
       box-sizing: border-box;
       color: #fff;
-      display: none;
+      display: block;
       font-size: 1.25rem;
       font-weight: 400;
       height: 100%;
@@ -57,6 +57,7 @@
       letter-spacing: 0.05rem;
       line-height: 2;
       min-height: 2rem;
+      opacity: 0;
       padding: 3rem 0.5rem 0.5rem 0.5rem;
       position: absolute;
       text-align: center;
@@ -64,7 +65,9 @@
       text-shadow: 4px 6px 6px rgba(0, 0, 0, 0.66);
       text-transform: uppercase;
       top: 0;
-      transition: background backdrop-filter 0.5s ease-in-out;
+      transition:
+        opacity 0.25s ease-in-out,
+        backdrop-filter 0.5s ease-in-out;
       width: 100%;
       z-index: 5;
     }
@@ -72,7 +75,7 @@
     &:hover,
     &:focus {
       .image-grid__title {
-        display: block;
+        opacity: 1;
       }
     }
   }
