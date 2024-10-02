@@ -9,7 +9,6 @@
         {% endif %}
           <img
             alt="{{ image.title }}"
-            style="background-color: rgba{{ image.get_dominant_color }}"
             data-src="/media/{{ image.thumbnail_image.name }}"
             data-target="lazy-image"
             src="/media/{{ image.low_quality_thumbnail_path}}"
