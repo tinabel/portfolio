@@ -1,5 +1,4 @@
 import datetime
-from io import BytesIO
 import os
 from django.conf import settings
 from django.db import models
@@ -104,6 +103,12 @@ class Image(models.Model):
 
   def get_dominant_color(self):
     return ImageUtility.dominant_color(self.image_file.name)
+
+  def low_quality_thumbnail_path(self):
+    return ImageUtility.low_quality_path("thumbnail", self.thumbnail_image.name)
+
+  def low_quality_full_size_image_path(self):
+    return ImageUtility.low_quality_path("full", self.image_file.name)
 
   def __str__(self):
     return self.title

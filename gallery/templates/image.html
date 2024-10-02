@@ -30,9 +30,16 @@
       rel="noopener"
       data-target="modal-trigger"
     >
-      <img src="/media/{{ image.image_file.name }}" alt="{{ image.alt }}" />
+      <img
+        alt="{{ image.alt }}"
+        data-src="/media/{{ image.image_file.name }}"
+        src="/media/{{ image.low_quality_full_size_image_path }}"
+        style="background-color: rgba{{ image.get_dominant_color }};"
+      />
     </a>
   </div>
 </div>
-{% endblock %} {% block modals %} {% include "./partials/_image_modal.html" %}
+{% endblock %}
+{% block modals %}
+  {% include "./partials/_image_modal.html" %}
 {% endblock %}

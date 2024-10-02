@@ -6,8 +6,24 @@ class ImageUtility:
   def thumbnail_path(image_path):
     return os.path.join(settings.MEDIA_ROOT,"thumbnails", os.path.basename(image_path))
 
+  def low_quality_path(image_type, image_path):
+    print(f"IMAGE PATH: {image_path}")
+    image_directory = "artwork" if image_type == "full" else "thumbnails"
+    print(image_directory)
+    image_path = os.path.join(settings.MEDIA_ROOT, image_directory, os.path.basename(image_path))
+    print(image_path)
+    new_path = os.path.join(settings.MEDIA_ROOT, f"low-quality-{image_directory}", os.path.basename(image_path))
+    relative_path = os.path.relpath(new_path, settings.MEDIA_ROOT)
+
+    if not os.path.exists(new_path):
+      img = Image.open(image_path)
+      low_quality_img = img.copy()
+      low_quality_img.save(new_path, 'webp', quality=30)
+
+    return relative_path
+
   def dominant_color(image_path):
-    image_path = settings.MEDIA_ROOT + '/' + image_path
+    image_path = os.path.join(settings.MEDIA_ROOT, image_path)
     pil_img = Image.open(image_path)
     img = pil_img.copy()
     img = img.convert("RGBA")

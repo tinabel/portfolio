@@ -12,7 +12,7 @@
             style="background-color: rgba{{ image.get_dominant_color }}"
             data-src="/media/{{ image.thumbnail_image.name }}"
             data-target="lazy-image"
-            src=""
+            src="/media/{{ image.low_quality_thumbnail_path}}"
             class="image-grid__image {{ image.get_focal_point_class }}"
           />
           <span class="image-grid__title">
