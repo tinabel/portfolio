@@ -1,5 +1,5 @@
 const container = document.querySelector('[data-target="zoom"]');
-const originalImage = document.querySelector('[data-target="zoom-image"]');
+const originalImage = document.querySelector('[data-target*="zoom-image"]');
 const largeImage = document.querySelector('[data-target="zoom-large-image"]');
 const ZOOM_ACTIVE_CLASS = 'active';
 

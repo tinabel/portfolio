@@ -1,3 +1,5 @@
+import {loader} from './utils.js';
+
 export const modalInit = () => {
   const modal = document.querySelector('[data-target="modal"]');
   const modalBg = document.querySelector('[data-target="modal-bg"]');

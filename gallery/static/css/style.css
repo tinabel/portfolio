@@ -664,6 +664,7 @@ button:hover path {
   display: block;
 }
 .image-grid .image-grid__image {
+  background-color: #000;
   height: auto;
   min-height: 100%;
   min-width: 100%;
