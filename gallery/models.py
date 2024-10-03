@@ -80,10 +80,10 @@ class Image(models.Model):
   tags = models.CharField(max_length=255, blank=True)
   is_featured = models.BooleanField(default=False)
   slug = models.SlugField(blank=True)
-  image_focal_point = models.CharField(max_length=255, choices=image_focal_points, null=True, blank=True)
   price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
   print_size_height = models.IntegerField(blank=True, null=True)
   print_size_width = models.IntegerField(blank=True, null=True)
+  image_focal_point = models.CharField(max_length=255, choices=image_focal_points, null=True, blank=True)
 
   def image_tag(self):
     url = settings.MEDIA_URL + self.thumbnail_image.name
