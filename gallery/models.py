@@ -81,6 +81,9 @@ class Image(models.Model):
   is_featured = models.BooleanField(default=False)
   slug = models.SlugField(blank=True)
   image_focal_point = models.CharField(max_length=255, choices=image_focal_points, null=True, blank=True)
+  price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+  print_size_height = models.IntegerField(blank=True, null=True)
+  print_size_width = models.IntegerField(blank=True, null=True)
 
   def image_tag(self):
     url = settings.MEDIA_URL + self.thumbnail_image.name
@@ -110,6 +113,9 @@ class Image(models.Model):
   def low_quality_full_size_image_path(self):
     return ImageUtility.low_quality_path("full", self.image_file.name)
 
+  def print_dimensions(self):
+    return f"{self.print_size_width}(inches wide) x {self.print_size_height}(inches high)"
+
   def __str__(self):
     return self.title
 
@@ -129,3 +135,17 @@ class Page(models.Model):
 
   def __str__(self):
     return self.title
+
+class Cart(models.Model):
+  created_at = models.DateTimeField(auto_now_add=True)
+
+class CartItem(models.Model):
+  cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+  product = models.ForeignKey(Image, on_delete=models.CASCADE)
+  quantity = models.PositiveIntegerField(default=1)
+
+  def __str__(self):
+    return f"{self.quantity} x {self.product.name}"
+
+  def total_price(self):
+    return self.quantity * self.product.price

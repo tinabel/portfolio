@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main_content %}
+  <h1>Your Cart</h1>
+  {% if cart %}
+    {% for item in cart.cartitem_set.all %}
+      <div class="cart-item">
+        {% if item.product.image %}
+        < img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+        {% else %}
+        < img src="https://via.placeholder.com/50" alt="No Image Available">
+        {% endif %}
+        <div class="details">
+          <p>{{ item.product.name }}</p>
+          <form action="{% url 'update_cart_item' item.id %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="quantity-input">
+            <button type="submit" class="update-btn">Update</button>
+          </form>
+        </div>
+        <div class="price">
+          <p>${{ item.total_price }}</p>
+        </div>
+        <div class="remove">
+          <a href="{% url 'remove_from_cart' item.product.id %}" class="btn-remove">Remove</a>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="total-price">
+      <p>Total: ${{ total_price }}</p>
+    </div>
+    <a href="{% url 'artwork' %}" class="btn">Back to Artwork</a>
+  {% else %}
+    <p>Your cart is empty.</p>
+    <a href="{% url 'artwork' %}" class="btn">Back to Artwork</a>
+  {% endif %}
+{% endblock %}
+

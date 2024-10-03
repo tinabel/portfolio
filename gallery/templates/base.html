@@ -111,7 +111,10 @@
       </p>
     </footer>
 
-    {% block modals %} {% endblock %} {% block scripts %}
+    {% block modals %}
+    {% endblock %}
+    
+    {% block scripts %}
     <script src="{% static 'js/default.js' %}" type="module"></script>
     {% endblock %}
   </body>

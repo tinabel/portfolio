@@ -1,6 +1,6 @@
 from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
 from django.contrib import admin
-from .models import Image, Series, Medium, Page
+from .models import Image, Series, Medium, Page, Cart, CartItem
 from import_export import resources
 from django import forms
 
@@ -78,4 +78,6 @@ class PageAdmin(ImportExportActionModelAdmin):
     return self.description
 
 admin.site.register(Page, PageAdmin)
+admin.site.register(Cart)
+admin.site.register(CartItem)
 
