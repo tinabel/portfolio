@@ -48,9 +48,9 @@ class ImageResource(resources.ModelResource):
 
 class ImageAdmin(ImportExportActionModelAdmin):
   resource_class = ImageResource
-  fields = ('title', 'image_tag', 'image_file', 'thumbnail_image', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured', 'image_focal_point')
+  fields = ('title', 'image_tag', 'image_file', 'thumbnail_image', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured', 'price', 'print_size_height', 'print_size_width', 'image_focal_point')
   list_display = ('title', 'image_file', 'thumbnail_image', 'slug', 'alt', 'description', 'medium', 'series', 'tags', 'is_featured')
-  list_filter = ('medium', 'series')
+  list_filter = ('medium', 'series', 'price')
   prepopulated_fields = {'slug': ('title',)}
   readonly_fields = ('image_tag',)
 
