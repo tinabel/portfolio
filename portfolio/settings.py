@@ -14,6 +14,7 @@ import os
 import dj_database_url
 from dotenv import load_dotenv
 from pathlib import Path
+import stripe
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,14 +28,20 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_API_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+stripe.api_key = STRIPE_API_KEY  # Use the secret key from your environment variables
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "https://bellvance.com", "http://www.bellvance.com"]
 
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
 # CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://bellvance.com", "https://www.bellvance.com"]
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -48,6 +55,7 @@ INSTALLED_APPS = [
     'import_export',
     'rest_framework',
     'template_partials',
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +74,9 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://django-server-production-636a.up.railway.app'
+    'https://django-server-production-636a.up.railway.app',
+    'https://bellvance.com',
+    ''https://www.bellvance.com'
 ]
 
 
@@ -105,11 +115,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("PGDATABASE"),
-        'USER': os.environ.get("PGUSER"),
-        'PASSWORD': os.environ.get("PGPASSWORD"),
-        'HOST': os.environ.get("PGHOST"),
-        'PORT': os.environ.get("PGPORT"),
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': os.getenv("PGPASSWORD"),
+        'HOST': 'junction.proxy.rlwy.net',
+        'PORT': '45588',
     }
 }
 # DATABASE_URL = os.getenv("DATABASE_URL")
