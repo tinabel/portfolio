@@ -8,12 +8,10 @@ from django.utils.html import mark_safe
 from .image_utility import ImageUtility
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-import stripe
 import logging
 
 logger = logging.getLogger(__name__)
 
-stripe.api_key = settings.STRIPE_API_KEY
 
 class Medium(models.Model):
   name = models.CharField(max_length=255)

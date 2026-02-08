@@ -14,7 +14,6 @@ import os
 import dj_database_url
 from dotenv import load_dotenv
 from pathlib import Path
-import stripe
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,10 +27,6 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
-STRIPE_API_KEY = os.getenv('STRIPE_SECRET_KEY')
-
-stripe.api_key = STRIPE_API_KEY  # Use the secret key from your environment variables
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -55,7 +50,6 @@ INSTALLED_APPS = [
     'import_export',
     'rest_framework',
     'template_partials',
-    'shop',
 ]
 
 MIDDLEWARE = [
