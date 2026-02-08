@@ -76,7 +76,7 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://django-server-production-636a.up.railway.app',
     'https://bellvance.com',
-    ''https://www.bellvance.com'
+    'https://www.bellvance.com'
 ]
 
 
